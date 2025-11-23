@@ -1,15 +1,12 @@
 // BitStream - Enhanced Premium Script
 
 // ============================================
-// CONFIGURAÇÕES
+// CONFIGURAÇÕES - Edite seu número do WhatsApp
 // ============================================
-const EMAILJS_CONFIG = {
-    PUBLIC_KEY: 'SUA_PUBLIC_KEY_AQUI',
-    SERVICE_ID: 'SEU_SERVICE_ID_AQUI',
-    TEMPLATE_ID: 'SEU_TEMPLATE_ID_AQUI'
-};
-
 const WHATSAPP_NUMBER = '5511999999999';
+
+// FORMULÁRIO: Edite seu email no index.html 
+// na linha: action="https://formsubmit.co/SEU_EMAIL_AQUI@gmail.com"
 
 // ============================================
 // PRODUTOS DA LOJA
@@ -84,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeader();
     initHeroCanvas();
     initWhatsApp();
-    initContactForm();
     initShopPage();
     initScrollAnimations();
     initCursor();
@@ -114,9 +110,20 @@ function initHeader() {
 
     // Mobile menu
     if (mobileMenuBtn && nav) {
-        mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             nav.classList.toggle('mobile-open');
             mobileMenuBtn.classList.toggle('active');
+            
+            // Adiciona efeito de ripple no clique
+            createRipple(e, mobileMenuBtn);
+            
+            // Previne scroll quando menu está aberto
+            if (nav.classList.contains('mobile-open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         });
 
         // Close on link click
@@ -124,6 +131,7 @@ function initHeader() {
             link.addEventListener('click', () => {
                 nav.classList.remove('mobile-open');
                 mobileMenuBtn.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
 
@@ -131,6 +139,8 @@ function initHeader() {
         document.addEventListener('click', (e) => {
             if (!nav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
                 nav.classList.remove('mobile-open');
+                mobileMenuBtn.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
     }
@@ -144,6 +154,43 @@ function initHeader() {
         }
     });
 }
+
+// Efeito ripple ao clicar no menu
+function createRipple(event, element) {
+    const ripple = document.createElement('span');
+    const rect = element.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = event.clientX - rect.left - size / 2;
+    const y = event.clientY - rect.top - size / 2;
+
+    ripple.style.cssText = `
+        position: absolute;
+        width: ${size}px;
+        height: ${size}px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(0, 217, 255, 0.6) 0%, transparent 70%);
+        top: ${y}px;
+        left: ${x}px;
+        pointer-events: none;
+        animation: ripple-animation 0.6s ease-out;
+    `;
+
+    element.style.position = 'relative';
+    element.style.overflow = 'hidden';
+    element.appendChild(ripple);
+
+    setTimeout(() => ripple.remove(), 600);
+} 
+
+    // Active page detection
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+            link.classList.add('active');
+        }
+    });
+
 
 // ============================================
 // HERO CANVAS - Animação Avançada
@@ -294,74 +341,10 @@ function initWhatsApp() {
 }
 
 // ============================================
-// CONTACT FORM
+// FORMULÁRIO agora usa FormSubmit.co
+// Não precisa de JavaScript! Funciona direto.
+// Edite seu email no index.html
 // ============================================
-function initContactForm() {
-    const contactForm = document.getElementById('contactForm');
-    if (!contactForm) return;
-
-    // Initialize EmailJS
-    if (window.emailjs && EMAILJS_CONFIG.PUBLIC_KEY !== 'SUA_PUBLIC_KEY_AQUI') {
-        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-    }
-
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-
-        const submitBtn = document.getElementById('submitBtn');
-        const statusMessage = document.getElementById('statusMessage');
-        const btnText = submitBtn.querySelector('span');
-        const originalText = btnText.textContent;
-
-        // Loading
-        submitBtn.disabled = true;
-        btnText.textContent = 'Enviando...';
-        submitBtn.style.opacity = '0.6';
-        statusMessage.style.display = 'none';
-
-        try {
-            if (!window.emailjs || EMAILJS_CONFIG.PUBLIC_KEY === 'SUA_PUBLIC_KEY_AQUI') {
-                throw new Error('Configure EmailJS no script.js (linhas 7-11)');
-            }
-
-            await emailjs.sendForm(
-                EMAILJS_CONFIG.SERVICE_ID,
-                EMAILJS_CONFIG.TEMPLATE_ID,
-                contactForm
-            );
-
-            // Success
-            statusMessage.innerHTML = `
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                    <path d="M22 4L12 14.01l-3-3"/>
-                </svg>
-                <span>✨ Mensagem enviada! Retornaremos em breve.</span>
-            `;
-            statusMessage.className = 'status-message success';
-            statusMessage.style.display = 'flex';
-
-            contactForm.reset();
-
-        } catch (error) {
-            console.error('Erro:', error);
-            statusMessage.innerHTML = `
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="12" y1="8" x2="12" y2="12"/>
-                    <line x1="12" y1="16" x2="12.01" y2="16"/>
-                </svg>
-                <span>${error.message}</span>
-            `;
-            statusMessage.className = 'status-message error';
-            statusMessage.style.display = 'flex';
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.style.opacity = '1';
-            btnText.textContent = originalText;
-        }
-    });
-}
 
 // ============================================
 // SHOP PAGE
@@ -566,3 +549,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 console.log('%c🚀 BitStream carregado!', 'color: #00D9FF; font-size: 16px; font-weight: bold;');
 console.log('%cPowered by BitStream', 'color: #9D4EDD; font-size: 12px;');
+
