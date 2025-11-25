@@ -292,6 +292,23 @@ a {
   justify-content: center;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-image {
+    width: 40px; /* Ajuste o tamanho que preferir */
+    height: auto;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+
 .flame-icon {
   width: 30px;
   height: 35px;

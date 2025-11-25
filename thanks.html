@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem Enviada - BitStream</title>
+
+    <link rel="stylesheet" href="assents/">
+    <link rel="shortcut icon" href="assents/img/favicon.ico" type="image/x-icon">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #060606, #0e0e0e);
+            color: #fff;
+            font-family: "Poppins", Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .thank-container {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            padding: 50px;
+            max-width: 600px;
+            text-align: center;
+            border-radius: 22px;
+            backdrop-filter: blur(12px);
+            animation: fadeUp 0.9s ease forwards;
+            box-shadow: 0 0 40px rgba(0, 213, 255, 0.15);
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 10px #00d4ff; }
+            to { box-shadow: 0 0 20px #8b5cf6; }
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            background: linear-gradient(90deg, #00d4ff, #8b5cf6);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        p {
+            opacity: 0.85;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .btn-return {
+            padding: 14px 30px;
+            background: linear-gradient(90deg, #00d4ff, #8b5cf6);
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.45);
+        }
+
+        .btn-return:hover {
+            transform: scale(1.07);
+            box-shadow: 0 0 28px rgba(139, 92, 246, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="thank-container">
+
+    <div class="logo-box">
+        <div class="logo-icon"></div>
+        <span style="font-size:1.4rem; font-weight:600;">BitStream</span>
+    </div>
+
+    <h1>Mensagem enviada com sucesso! ✔</h1>
+
+    <p id="clientMessage">
+        Obrigado por entrar em contato com a <strong>BitStream</strong>.<br>
+        Estamos processando sua mensagem...
+    </p>
+
+    <a href="index.html" class="btn-return" style="margin-top:10px; display:inline-block;">
+        Voltar ao site
+    </a>
+
+</div>
+
+</body>
+</html>

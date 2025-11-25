@@ -336,15 +336,9 @@ function initWhatsApp() {
 
     whatsappBtn.addEventListener('click', () => {
         const message = encodeURIComponent('Olá! Gostaria de saber mais sobre os serviços da BitStream.');
-        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+        window.open(`https://wa.me/${5583999030320}?text=${message}`, '_blank');
     });
 }
-
-// ============================================
-// FORMULÁRIO agora usa FormSubmit.co
-// Não precisa de JavaScript! Funciona direto.
-// Edite seu email no index.html
-// ============================================
 
 // ============================================
 // SHOP PAGE
