@@ -336,7 +336,7 @@ function initWhatsApp() {
 
     whatsappBtn.addEventListener('click', () => {
         const message = encodeURIComponent('Olá! Gostaria de saber mais sobre os serviços da BitStream.');
-        window.open(`https://wa.me/${5583999030320}?text=${message}`, '_blank');
+        window.open(`https://wa.me/${447785314195}?text=${message}`, '_blank');
     });
 }
 
@@ -440,7 +440,7 @@ function initShopPage() {
 // Buy product
 window.buyProduct = function(productName, price) {
     const message = encodeURIComponent(`Olá! Tenho interesse no produto: ${productName} (${price})`);
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+    window.open(`https://wa.me/${447785314195}?text=${message}`, '_blank');
 };
 
 // ============================================
