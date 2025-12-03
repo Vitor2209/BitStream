@@ -439,7 +439,7 @@ function initShopPage() {
 
 // Buy product
 window.buyProduct = function(productName, price) {
-    const message = encodeURIComponent(`Olá! Tenho interesse no produto: ${productName} (${price})`);
+    const message = encodeURIComponent(`Hello! I have an interest in the product: ${productName} (${price})`);
     window.open(`https://wa.me/${447785314195}?text=${message}`, '_blank');
 };
 
