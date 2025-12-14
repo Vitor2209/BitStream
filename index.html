@@ -1,611 +1,240 @@
 <!DOCTYPE html>
-<html lang="en-gb">
-
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BitStream - Digital Solutions and Web Development</title>
-  <meta name="description"
-    content="Desenvolvimento web premium, sistemas personalizados e painéis sob medida com tecnologia de ponta." />
-  <link rel="stylesheet" href="assents/css/style.css" />
-  <link rel="shortcut icon" href="assents/img/favicon.ico" type="image/x-icon" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitStream - Digital Solutions & Web Development</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="assents/ChatGPT Image 28 de nov. de 2025, 11_19_43.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <!-- Header -->
-  <header class="header" id="header">
-    <div class="header-container">
-      <a href="index.html" class="logo">
-        <img src="assents/img/ChatGPT Image 28 de nov. de 2025, 11_19_43.png"Logo BitStream" class="logo-image" />
-        <span class="logo-text">BitStream</span>
-      </a>
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
 
-      <nav class="nav" id="nav">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="servicos.html" class="nav-link">Services</a>
-        <a href="loja.html" class="nav-link">Shop</a>
-        <a href="#contato" class="btn-primary">Contact</a>
-      </nav>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon">
+                    <img src="assents/ChatGPT Image 28 de nov. de 2025, 11_19_43.png" width="40" height="40" viewBox="0 0 100 100" fill="none"  alt="logo-icon">
+                </div>
+                <span class="logo-text">BitStream</span>
+            </a>
+            
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">HOME</a></li>
+                <li><a href="pages/services.html" class="nav-link">SERVICES</a></li>
+                <li><a href="pages/shop.html" class="nav-link">SHOP</a></li>
+                <li><a href="pages/contact.html" class="nav-link">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
 
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-        <span class="hamburger"></span>
-      </button>
-    </div>
-  </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                PREMIUM WEB DEVELOPMENT
+            </div>
+            <h1 class="hero-title">
+                Digital Solutions<br>
+                <span class="gradient-text">and Web Development</span><br>
+                <span class="hero-subtitle">Custom</span>
+            </h1>
+            <p class="hero-description">
+                We transform your ideas into exceptional digital experiences.<br>
+                Customised websites, systems, and dashboards built with cutting-edge technology.
+            </p>
+            <div class="hero-buttons">
+                <a href="pages/contact.html" class="btn btn-primary">
+                    <span>BEGIN PROJECT</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+                <a href="pages/services.html" class="btn btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="13 17 18 12 13 7"></polyline>
+                        <polyline points="6 17 11 12 6 7"></polyline>
+                    </svg>
+                    <span>VIEW SERVICES</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-glow"></div>
+    </section>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <canvas id="heroCanvas" class="hero-canvas"></canvas>
-    <div class="hero-content">
-      <div class="hero-badge">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose <span class="gradient-text">BitStream</span>?</h2>
+                <p class="section-subtitle">Excellence in every line of code</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Modern Technology</h3>
+                    <p class="feature-description">We use the latest frameworks and tools to deliver cutting-edge solutions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Responsive Design</h3>
+                    <p class="feature-description">Perfect experience across all devices, from mobile to desktop.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Fast Delivery</h3>
+                    <p class="feature-description">Agile development with clear milestones and timely delivery.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Security First</h3>
+                    <p class="feature-description">Your data and your clients' data protected with best practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-overlay"></div>
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Transform Your Digital Presence?</h2>
+                <p class="cta-description">Let's build something extraordinary together</p>
+                <a href="pages/contact.html" class="btn btn-primary btn-large">
+                    <span>START YOUR PROJECT</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <img src="assents/ChatGPT Image 28 de nov. de 2025, 11_19_43.png" width="35" height="35" alt="logo">
+                        </div>
+                        <span>BitStream</span>
+                    </div>
+                    <p class="footer-description">Transforming ideas into exceptional digital experiences since 2020.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/services.html">Services</a></li>
+                        <li><a href="pages/shop.html">Shop</a></li>
+                        <li><a href="pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="pages/services.html#web-development">Web Development</a></li>
+                        <li><a href="pages/services.html#custom-systems">Custom Systems</a></li>
+                        <li><a href="pages/services.html#ecommerce">E-commerce</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li>contato.bitstream@gmail.com</li>
+                        <li>+44 (77) 8531-4195</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="https://www.instagram.com/bitstream.ltda/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="https://www.facebook.com/people/Bit-Stream/pfbid02o8ZiRfAyyHAzCjvX6Hajyfx7qoH8HaRKL2pofThJgmjM4igJfzuhrxowBFQXARy8l/?locale=pt_BR" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/company/109861222/admin/dashboard/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="https://x.com/BitStream_LTDA" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                </div>
+                <p>&copy; 2025 BitStream. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20os%20serviços%20da%20BitStream." 
+       class="whatsapp-float" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       aria-label="Contato via WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.824.736 5.488 2.016 7.8L.696 30.696l7.208-1.896A15.935 15.935 0 0 0 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.36c-2.456 0-4.76-.672-6.736-1.84l-.48-.288-4.992 1.312 1.336-4.872-.32-.504A13.288 13.288 0 0 1 2.64 16c0-7.352 5.984-13.336 13.336-13.336S29.312 8.648 29.312 16 23.328 29.36 15.976 29.36zm7.312-9.984c-.4-.2-2.368-1.168-2.736-1.304-.368-.136-.632-.2-.904.2-.264.4-1.04 1.304-1.272 1.576-.232.272-.464.304-.864.104-.4-.2-1.688-.624-3.216-1.984-1.184-1.056-1.992-2.36-2.224-2.76-.232-.4-.024-.616.176-.816.176-.176.4-.464.6-.696.2-.232.264-.4.4-.664.136-.272.072-.504-.032-.704-.104-.2-.904-2.176-1.24-2.984-.32-.784-.648-.68-.904-.696-.232-.016-.496-.016-.76-.016s-.696.096-1.064.496c-.368.4-1.4 1.368-1.4 3.336s1.432 3.872 1.632 4.136c.2.272 2.824 4.312 6.84 6.048.952.416 1.696.664 2.272.848.96.304 1.832.264 2.52.16.768-.112 2.368-.968 2.704-1.904.336-.936.336-1.736.232-1.904-.096-.168-.36-.272-.76-.472z"/>
         </svg>
-        <span>Premium Web Development</span>
-      </div>
-      <h1 class="hero-title">
-        Digital Solutions and<br />
-        <span class="gradient-text">Web Development</span><br />
-        Custom
-      </h1>
-      <p class="hero-description">
-        We transform your ideas into exceptional digital experiences. Customised websites, systems, and dashboards built with cutting-edge technology.
-      </p>
-      <div class="hero-cta">
-        <a href="#contato" class="btn-primary">
-          <span>Begin Project</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </a>
-        <a href="#servicos" class="btn-secondary">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
-          </svg>
-          <span>View Services</span>
-        </a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-number">100+</div>
-          <div class="stat-label">Completed Projects</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">98%</div>
-          <div class="stat-label">Satisfaction</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">24/7</div>
-          <div class="stat-label">Suport</div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </a>
 
-  <!-- About Section -->
-  <section class="about" id="sobre">
-    <div class="container">
-      <h2 class="section-title">About BitStream</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <p class="about-lead">
-           We are specialists in creating digital solutions that transform businesses. Using cutting-edge technology and innovative design, we deliver projects that exceed expectations.
-          </p>
-          <p>
-            Our mission is to simplify the complex and make digital accessible to everyone. Every line of code is written with passion and a commitment to excellence.
-          </p>
-        </div>
-        <div class="about-features">
-          <div class="feature-card card">
-            <div class="feature-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-              </svg>
-            </div>
-            <h3>System Performance</h3>
-            <p>
-              Ultra-fast websites optimised for conversion and user experience
-            </p>
-          </div>
-          <div class="feature-card card">
-            <div class="feature-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10" />
-                <circle cx="12" cy="12" r="6" />
-                <circle cx="12" cy="12" r="2" />
-              </svg>
-            </div>
-            <h3>Accuracy</h3>
-            <p>
-              Custom Development with a Complete Focus on Your Goals
-            </p>
-          </div>
-          <div class="feature-card card">
-            <div class="feature-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>
-            </div>
-            <h3>Quality</h3>
-            <p>Premium Delivery with Industry Best Practices</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section class="services" id="servicos">
-    <div class="container">
-      <h2 class="section-title">Our Services</h2>
-      <div class="services-grid">
-        <div class="service-card card">
-          <div class="service-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10" />
-              <circle cx="12" cy="12" r="4" />
-              <path
-                d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-            </svg>
-          </div>
-          <h3>Web Development</h3>
-          <p>
-            Institutional websites, landing pages, and modern portfolios with responsive design
-          </p>
-        </div>
-        <div class="service-card card">
-          <div class="service-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="3" width="20" height="14" rx="2" />
-              <path d="M8 21h8M12 17v4" />
-            </svg>
-          </div>
-          <h3>Custom Systems</h3>
-          <p>
-            Complete web platforms and bespoke systems tailored for your business
-          </p>
-        </div>
-        <div class="service-card card">
-          <div class="service-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <ellipse cx="12" cy="5" rx="9" ry="3" />
-              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-            </svg>
-          </div>
-          <h3>Panels & Dashboardss</h3>
-          <p>Interactive dashboards for data visualisation and management</p>
-        </div>
-        <div class="service-card card">
-          <div class="service-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="5" y="2" width="14" height="20" rx="2" />
-              <path d="M12 18h.01" />
-            </svg>
-          </div>
-          <h3>Professional Websites</h3>
-          <p>Corporate websites with premium design and high conversion rates</p>
-        </div>
-        <div class="service-card card">
-          <div class="service-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="3" />
-              <path
-                d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24" />
-            </svg>
-          </div>
-          <h3>Automation</h3>
-          <p>
-            Automation solutions to optimise processes and increase productivity
-          </p>
-        </div>
-        <div class="service-card card">
-          <div class="service-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-            </svg>
-          </div>
-          <h3>Technical Consulting</h3>
-          <p>
-            Specialist guidance in architecture and digital strategy
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio Section -->
-  <section class="portfolio" id="portfolio">
-    <div class="container">
-      <h2 class="section-title">Featured Projects</h2>
-      <div class="portfolio-grid">
-        <div class="portfolio-card">
-          <div class="portfolio-image">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
-              alt="E-commerce Premium" />
-            <div class="portfolio-overlay">
-              <button class="portfolio-link" aria-label="Ver projeto">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div class="portfolio-content">
-            <div class="portfolio-category">Web Development</div>
-            <h3>Premium E-commerce</h3>
-            <p>Online sales platform with integrated payment</p>
-          </div>
-        </div>
-        <div class="portfolio-card">
-          <div class="portfolio-image">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Dashboard Analítico" />
-            <div class="portfolio-overlay">
-              <button class="portfolio-link" aria-label="Ver projeto">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div class="portfolio-content">
-            <div class="portfolio-category">Admin Panel</div>
-            <h3>Analytical Dashboard</h3>
-            <p>Management system with real-time graphs and reports</p>
-          </div>
-        </div>
-        <div class="portfolio-card">
-          <div class="portfolio-image">
-            <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=800&q=80"
-              alt="Landing Page SaaS" />
-            <div class="portfolio-overlay">
-              <button class="portfolio-link" aria-label="Ver projeto">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div class="portfolio-content">
-            <div class="portfolio-category">Marketing</div>
-            <h3>Landing Page SaaS</h3>
-            <p>Conversion page optimised for B2B software</p>
-          </div>
-        </div>
-        <div class="portfolio-card">
-          <div class="portfolio-image">
-            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80"
-              alt="App Mobile Responsivo" />
-            <div class="portfolio-overlay">
-              <button class="portfolio-link" aria-label="Ver projeto">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div class="portfolio-content">
-            <div class="portfolio-category">Web App</div>
-            <h3>Responsive Mobile App</h3>
-            <p>Multi-platform Progressive Web Application (PWA)</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section class="testimonials" id="depoimentos">
-    <div class="container">
-      <h2 class="section-title">What Our Clients Say</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card card">
-          <svg class="quote-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
-            <path
-              d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1zM15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" />
-          </svg>
-          <div class="testimonial-rating">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-cyan)" stroke="var(--brand-cyan)"
-              stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-cyan)" stroke="var(--brand-cyan)"
-              stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-cyan)" stroke="var(--brand-cyan)"
-              stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-cyan)" stroke="var(--brand-cyan)"
-              stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-cyan)" stroke="var(--brand-cyan)"
-              stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-          </div>
-          <p class="testimonial-content">
-            BitStream completely transformed our digital presence. The site is amazing, and we saw a 150% increase in sales within 3 months!
-          </p>
-          <div class="testimonial-author">
-            <div class="author-info">
-              <div class="author-name">Carlos Silva</div>
-              <div class="author-role">CEO, TechStart</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card card">
-          <svg class="quote-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
-            <path
-              d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1zM15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" />
-          </svg>
-          <div class="testimonial-rating">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-cyan)" stroke="var(--brand-cyan)"
-              stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-cyan)" stroke="var(--brand-cyan)"
-              stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-cyan)" stroke="var(--brand-cyan)"
-              stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-cyan)" stroke="var(--brand-cyan)"
-              stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-cyan)" stroke="var(--brand-cyan)"
-              stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-          </div>
-          <p class="testimonial-content">
-            Highly competent professionals. They provided a dashboard that has completely transformed how we manage our data.
-          </p>
-          <div class="testimonial-author">
-            <div class="author-info">
-              <div class="author-name">Ana Rodrigues</div>
-              <div class="author-role">Marketing Director</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card card">
-          <svg class="quote-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
-            <path
-              d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1zM15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" />
-          </svg>
-          <div class="testimonial-rating">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-cyan)" stroke="var(--brand-cyan)"
-              stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-cyan)" stroke="var(--brand-cyan)"
-              stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-cyan)" stroke="var(--brand-cyan)"
-              stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-cyan)" stroke="var(--brand-cyan)"
-              stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-cyan)" stroke="var(--brand-cyan)"
-              stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-          </div>
-          <p class="testimonial-content">
-            The best investment we've ever made! Bespoke system, agile, and with exceptional support.
-          </p>
-          <div class="testimonial-author">
-            <div class="author-info">
-              <div class="author-name">Pedro Costa</div>
-              <div class="author-role">Founder, StartupX</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact" id="contato">
-    <div class="container">
-      <h2 class="section-title">Contact Us</h2>
-      <div class="contact-wrapper">
-        <div class="contact-info">
-          <h3>Shall we talk?</h3>
-          <p>
-            Ready to turn your idea into reality? Get in touch and receive a personalised quote
-          </p>
-          <div class="contact-details">
-            <div class="contact-item">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <path d="M22 6l-10 7L2 6" />
-              </svg>
-              <div>
-                <strong>Email</strong>
-                <p>contato.bitstream@gmail.com</p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path
-                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-              </svg>
-              <div>
-                <strong>Phone</strong>
-                <p>+44 (77) 8531-4195</p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              <div>
-                <strong>Location</strong>
-                <p>London, United Kingdom</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <form action="https://formsubmit.co/contato.bitstream@gmail.com" method="POST" class="contact-form">
-          <!-- Configurações do FormSubmit -->
-          <input type="hidden" name="_subject" value="Nova mensagem do site BitStream!" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_next" value="thanks.html" />
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" method="POST" required placeholder="Seu nome completo" />
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" method="POST" required placeholder="your@email.com" />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" method="POST" placeholder="(00) 00000-0000" />
-            </div>
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" method="POST" required placeholder="How can we help?" />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required rows="6"
-              placeholder="Describe your project or query..."></textarea>
-          </div>
-
-          <button type="submit" class="btn-primary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-            </svg>
-            <span>Send Message</span>
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <div class="footer-logo">
-            <a href="index.html" class="logo">
-              <img src="assents/img/ChatGPT Image 28 de nov. de 2025, 11_19_43.png" alt="Logo BitStream"
-                class="logo-image">
-              <span class="logo-text">BitStream</span>
-            </a>
-          </div>
-
-          <p class="footer-description">
-            Transforming ideas into digital reality. High-quality web development.
-          </p>
-          <div class="footer-social">
-            <a href="https://www.facebook.com/profile.php?id=61584332763629&locale=pt_BR" aria-label="Facebook" _blank>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-              </svg>
-            </a>
-            <a href="https://www.instagram.com/btsm.ltda?igsh=MTBuYzY3YmZtMWlkOA==" aria-label="Instagram" _blank>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-              </svg>
-            </a>
-            <a href="https://www.linkedin.com/company/bitstream3/" aria-label="LinkedIn" _blank>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
-            </a>
-            <a href="https://x.com/BitStream_LTDA" aria-label="Twitter" _blank>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="servicos.html">Services</a></li>
-            <li><a href="loja.html">Shop</a></li>
-            <li><a href="#contato">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Systems</a></li>
-            <li><a href="#">Dashboards</a></li>
-            <li><a href="#">Consulting</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Newsletter</h4>
-          <p>Receive updates and tips on development</p>
-          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!')">
-            <input type="email" placeholder="Your email" required />
-            <button type="submit" aria-label="Inscrever">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <path d="M22 6l-10 7L2 6" />
-              </svg>
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2025 BitStream. All rights reserved.</p>
-        <div class="footer-links">
-          <a href="#">Privacy</a>
-          <a href="#">Terms of Use</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- WhatsApp Button -->
-  <button class="whatsapp-button" id="whatsappBtn" aria-label="Contato via WhatsApp">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-      <path
-        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-    </svg>
-    <span class="whatsapp-tooltip">Contact Us</span>
-  </button>
-
-  <script src="assents/js/script.js"></script>
+    <script src="script/script.js"></script>
 </body>
-
 </html>
