@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BitStream Digital Shop</title>
+  <meta name="description" content="BitStream Digital Shop - Premium digital products and templates. Buy via WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <a href="#contact" class="top-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          Contact
+        </a>
+        <a href="#products" class="top-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="1" y="3" width="15" height="13"></rect>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          </svg>
+          Products
+        </a>
+        <a href="#products" class="top-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          Catalog
+        </a>
+      </div>
+      <div class="top-bar-right">
+        <span class="top-text" data-i18n="top_free_shipping">Free shipping worldwide. Orders over $100</span>
+        <div class="top-divider"></div>
+        <select class="top-select" id="currencySelect">
+          <option>USD</option>
+          <option>EUR</option>
+          <option>BRL</option>
+        </select>
+        <select class="top-select" id="langSelect">
+          <option value="en">English</option>
+          <option value="pt">Português</option>
+          <option value="es">Español</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <header class="header">
+    <div class="container">
+      <a href="/" class="logo" title="Voltar para o site">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="8" fill="#2563EB"/>
+          <path d="M8 10h4l2 12h8l2-8H12" stroke="white" stroke-width="2" fill="none"/>
+          <circle cx="13" cy="26" r="2" fill="white"/>
+          <circle cx="23" cy="26" r="2" fill="white"/>
+        </svg>
+        <span>bitstream shop</span>
+      </a>
+      
+      <nav class="nav-menu desktop-only">
+        <a href="#home" class="nav-link active" data-i18n="nav_home">Home</a>
+        <a href="#products" class="nav-link" data-i18n="nav_products">Products</a>
+        <a href="#deals" class="nav-link" data-i18n="nav_deals">Deals</a>
+        <a href="#contact" class="nav-link" data-i18n="nav_contact">Contact Us</a>
+      </nav>
+
+      <div class="header-center">
+        <div class="header-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="10 8 16 12 10 16 10 8"></polygon>
+          </svg>
+          <span>Amazing Deals</span>
+        </div>
+        <div class="header-phone">
+          <span class="phone-label">24/7 Support</span>
+          <span class="phone-number">1-800-888-9999</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="action-btn" id="accountBtn" aria-label="Account">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+        <button class="action-btn" id="wishlistBtn" aria-label="Wishlist">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="badge" id="wishlistBadge">0</span>
+        </button>
+        <button class="action-btn" id="cartBtn" aria-label="Cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="badge" id="cartBadge">0</span>
+        </button>
+        <div class="cart-total desktop-only">
+          <span>$0.00</span>
+        </div>
+        <button class="mobile-menu-btn mobile-only" id="mobileMenuBtn" aria-label="Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <div class="container">
+      <div class="nav-bar-left">
+        <button class="department-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <span data-i18n="dept_btn">Shop by Department</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="department-menu" id="departmentMenu">
+          <a href="#products" data-dept="Templates">Templates</a>
+          <a href="#products" data-dept="UI Kits">UI Kits</a>
+          <a href="#products" data-dept="E-commerce">E-commerce</a>
+          <a href="#products" data-dept="Components">Components</a>
+          <a href="#products" data-dept="Docs">Docs</a>
+        </div>
+        <div class="search-bar">
+          <select class="search-category">
+            <option>All Categories</option>
+            <option>Templates</option>
+            <option>UI Kits</option>
+            <option>E-commerce</option>
+            <option>Components</option>
+            <option>Docs</option>
+          </select>
+          <input type="text" id="searchInput" data-i18n-placeholder="search_placeholder" placeholder="Search for Products..." class="search-input">
+          <button class="search-btn" id="searchBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="nav-bar-right desktop-only">
+        <a href="#" class="nav-bar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          Recently Viewed
+        </a>
+        <a href="#" class="nav-bar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+          </svg>
+          Order Status
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <span>Menu</span>
+      <button class="mobile-menu-close" id="mobileMenuClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <nav class="mobile-nav">
+      <a href="#home" data-i18n="nav_home">Home</a>
+      <a href="#products" data-i18n="nav_products">Products</a>
+      <a href="#deals" data-i18n="nav_deals">Deals</a>
+      <a href="#contact" data-i18n="nav_contact">Contact Us</a>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <button class="hero-arrow hero-arrow-left" aria-label="Previous" id="heroPrev">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <div class="hero-content">
+        <span class="hero-subtitle" id="heroSubtitle">DIGITAL SHOP</span>
+        <h1 class="hero-title" id="heroTitle">Premium Digital<br><span>Products & Templates</span></h1>
+        <p class="hero-price-label">Starting at</p>
+        <p class="hero-price" id="heroPrice">R$ 199</p>
+        <a href="#products" class="hero-btn" id="heroCta">
+          Ver produtos
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=500&fit=crop" alt="Digital Products" id="heroImage">
+      </div>
+      <button class="hero-arrow hero-arrow-right" aria-label="Next" id="heroNext">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+      <div class="hero-dots">
+        <span class="hero-dot active" data-hero-dot="0"></span>
+        <span class="hero-dot" data-hero-dot="1"></span>
+        <span class="hero-dot" data-hero-dot="2"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories">
+    <div class="container">
+      <div class="categories-wrapper" id="categoriesWrapper">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo Banners -->
+  <section class="promo-banners">
+    <div class="container">
+      <div class="banners-grid" id="bannersGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Products (Single Page Catalog) -->
+  <section class="products-section" id="products">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="products_title">Products</h2>
+        <div class="trending-tabs" id="productFilters">
+          <button class="trending-tab active" data-filter="all" data-i18n="filter_all">All</button>
+          <button class="trending-tab" data-filter="Templates">Templates</button>
+          <button class="trending-tab" data-filter="UI Kits">UI Kits</button>
+          <button class="trending-tab" data-filter="E-commerce">E-commerce</button>
+          <button class="trending-tab" data-filter="Components">Components</button>
+          <button class="trending-tab" data-filter="Docs">Docs</button>
+        </div>
+      </div>
+      <div class="products-grid" id="productsGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- <span data-i18n="deals_title">Today's Featured Deals</span> -->
+  <section class="deals-section" id="deals">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="deals_title">Today's Featured Deals</h2>
+        <div class="section-header-right">
+          <div class="countdown">
+            <span class="countdown-label" data-i18n="deals_end_in">End in:</span>
+            <div class="countdown-timer" id="countdownTimer">
+              <div class="countdown-item">
+                <span class="countdown-value" id="countdownDays">00</span>
+              </div>
+              <span class="countdown-separator">:</span>
+              <div class="countdown-item">
+                <span class="countdown-value" id="countdownHours">00</span>
+              </div>
+              <span class="countdown-separator">:</span>
+              <div class="countdown-item">
+                <span class="countdown-value" id="countdownMinutes">00</span>
+              </div>
+              <span class="countdown-separator">:</span>
+              <div class="countdown-item">
+                <span class="countdown-value" id="countdownSeconds">00</span>
+              </div>
+            </div>
+          </div>
+          <div class="section-arrows">
+            <button class="arrow-btn" id="dealsPrev">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="arrow-btn" id="dealsNext">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="deals-slider">
+        <div class="deals-track" id="dealsTrack">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Middle Banners -->
+  <section class="middle-banners">
+    <div class="container">
+      <div class="middle-banners-grid">
+        <div class="middle-banner middle-banner-large">
+          <div class="middle-banner-content">
+            <span class="middle-banner-tag">GET REWARDED</span>
+            <h3 class="middle-banner-title">Super Cheap Price</h3>
+            <p class="middle-banner-text">Earn 20% Back in Rewards</p>
+            <a href="#" class="middle-banner-btn">
+              Shop Now
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+          <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?w=400&h=200&fit=crop" alt="Marshall Speaker" class="middle-banner-img">
+        </div>
+        <div class="middle-banner middle-banner-small">
+          <img src="https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=200&h=200&fit=crop" alt="Power Bank" class="middle-banner-img-small">
+          <div class="middle-banner-content-small">
+            <span class="middle-banner-tag">Charger Power</span>
+            <p class="middle-banner-name">Bank 10000mAh</p>
+            <p class="middle-banner-price-label">Starting at</p>
+            <p class="middle-banner-price">$79.99</p>
+          </div>
+        </div>
+        <div class="middle-banner middle-banner-small middle-banner-accent">
+          <img src="https://images.unsplash.com/photo-1606318801954-d46d46d3360a?w=200&h=200&fit=crop" alt="Switch Controller" class="middle-banner-img-small">
+          <div class="middle-banner-content-small">
+            <span class="middle-banner-tag">Controller for</span>
+            <p class="middle-banner-name">Switch/Switch OLED</p>
+            <p class="middle-banner-discount-label">Discount</p>
+            <p class="middle-banner-discount">30% Off</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <span data-i18n="trending_title">Trending This Week</span> -->
+  <section class="trending-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="trending_title">Trending This Week</h2>
+        <div class="trending-tabs" id="trendingTabs">
+          <button class="trending-tab active" data-tab="best">Best Seller</button>
+          <button class="trending-tab" data-tab="sale">Sales</button>
+          <button class="trending-tab" data-tab="featured">Featured</button>
+          <button class="trending-tab" data-tab="new">New Products</button>
+          <a href="#" class="trending-view-all"><span data-i18n="view_all">View All</span></a>
+        </div>
+      </div>
+      <div class="trending-grid" id="trendingGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom Banner -->
+  <section class="bottom-banner">
+    <div class="container">
+      <div class="bottom-banner-content">
+        <span class="bottom-banner-tag">NEW COLLECTION</span>
+        <h2 class="bottom-banner-title">Up to <span>30% Off</span></h2>
+        <p class="bottom-banner-subtitle">Instant Discount</p>
+        <p class="bottom-banner-text">Applicable on debit card, credit card, net banking.</p>
+      </div>
+      <div class="bottom-banner-images">
+        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&h=350&fit=crop" alt="MacBook" class="bottom-banner-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-card">
+        <div>
+          <h2 class="contact-title" data-i18n="contact_title">Need help or want to buy a digital product?</h2>
+          <p class="contact-subtitle" data-i18n="contact_subtitle">Click below and we'll open WhatsApp with a ready message.</p>
+        </div>
+        <button class="contact-whatsapp" id="contactWhatsApp" data-i18n="contact_btn">Contact on WhatsApp</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Purchase Modal (WhatsApp) -->
+  <div class="modal" id="purchaseModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card" role="document">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <h3 class="modal-title" id="purchaseModalTitle">Produto</h3>
+          <p class="modal-subtitle" id="purchaseModalDesc"></p>
+        </div>
+        <button class="modal-close" id="purchaseModalClose" aria-label="Fechar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-price" id="purchaseModalPrice">R$ 0</div>
+        <p class="modal-help" data-i18n="modal_help">Preencha (opcional) para eu te atender mais rápido. Ao continuar, vamos abrir o WhatsApp com a mensagem pronta.</p>
+
+        <form id="purchaseForm" class="modal-form">
+          <div class="modal-field">
+            <label for="purchaseName">Nome</label>
+            <input id="purchaseName" type="text" placeholder="Seu nome" autocomplete="name">
+          </div>
+          <div class="modal-field">
+            <label for="purchaseEmail">Email</label>
+            <input id="purchaseEmail" type="email" placeholder="seuemail@exemplo.com" autocomplete="email">
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="modal-btn secondary" id="purchaseModalCancel" data-i18n="modal_cancel">Cancelar</button>
+            <button type="submit" class="modal-btn primary" data-i18n="modal_continue">Continuar no WhatsApp</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer (Clean) -->
+  
+
+<footer class="footer footer-bitstream">
+  <div class="footer-container">
+    <div class="footer-social footer-social--center">
+      <span class="social-circle"><a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a></span>
+      <span class="social-circle"><a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a></span>
+      <span class="social-circle"><a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+  <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+    <path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.48 1s2.5 1.12 2.5 2.5ZM.5 23.5h4V7.5h-4v16ZM8.5 7.5h3.8v2.2h.06c.53-1 1.84-2.2 3.79-2.2 4.05 0 4.8 2.66 4.8 6.12v9.88h-4v-8.76c0-2.09-.04-4.78-2.91-4.78-2.91 0-3.36 2.28-3.36 4.63v8.91h-4V7.5Z"/>
+  </svg>
+</a></span>
+      <span class="social-circle"><a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="X">
+  <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+    <path fill="currentColor" d="M18.9 2H22l-6.8 7.8L23.5 22h-6.7l-5.2-6.9L5.6 22H2.5l7.3-8.4L1 2h6.9l4.7 6.2L18.9 2Zm-1.2 18h1.7L6.9 3.9H5.1L17.7 20Z"/>
+  </svg>
+</a></span>
+    </div>
+    <p class="footer-copy">© 2025 BitStream. All rights reserved.</p>
+  </div>
+</footer>
+
+
+
+  <script src="js/app.js"></script>
+
+<!-- Floating WhatsApp Button -->
+<!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/447785314195?text=Hello!%20I%20would%20like%20to%20know%20more%20about%20the%20services%20offered%20by%20BitStream." 
+       class="whatsapp-float" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       aria-label="Contato via WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.824.736 5.488 2.016 7.8L.696 30.696l7.208-1.896A15.935 15.935 0 0 0 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.36c-2.456 0-4.76-.672-6.736-1.84l-.48-.288-4.992 1.312 1.336-4.872-.32-.504A13.288 13.288 0 0 1 2.64 16c0-7.352 5.984-13.336 13.336-13.336S29.312 8.648 29.312 16 23.328 29.36 15.976 29.36zm7.312-9.984c-.4-.2-2.368-1.168-2.736-1.304-.368-.136-.632-.2-.904.2-.264.4-1.04 1.304-1.272 1.576-.232.272-.464.304-.864.104-.4-.2-1.688-.624-3.216-1.984-1.184-1.056-1.992-2.36-2.224-2.76-.232-.4-.024-.616.176-.816.176-.176.4-.464.6-.696.2-.232.264-.4.4-.664.136-.272.072-.504-.032-.704-.104-.2-.904-2.176-1.24-2.984-.32-.784-.648-.68-.904-.696-.232-.016-.496-.016-.76-.016s-.696.096-1.064.496c-.368.4-1.4 1.368-1.4 3.336s1.432 3.872 1.632 4.136c.2.272 2.824 4.312 6.84 6.048.952.416 1.696.664 2.272.848.96.304 1.832.264 2.52.16.768-.112 2.368-.968 2.704-1.904.336-.936.336-1.736.232-1.904-.096-.168-.36-.272-.76-.472z"/>
+        </svg>
+    </a>
+
+
+<!-- Service Request Modal -->
+<div class="modal" id="serviceModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close="service"></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="serviceTitle">
+    <div class="modal-head">
+      <h3 id="serviceTitle">Descreva o serviço que você precisa</h3>
+      <button class="modal-x" type="button" data-close="service" aria-label="Fechar">×</button>
+    </div>
+
+    <div class="modal-body">
+      <label class="field">
+        <span>Seu nome</span>
+        <input id="serviceName" type="text" placeholder="Ex: Vitor" autocomplete="name" />
+      </label>
+
+      <label class="field">
+        <span>Seu e-mail</span>
+        <input id="serviceEmail" type="email" placeholder="Ex: voce@email.com" autocomplete="email" />
+      </label>
+
+      <label class="field">
+        <span>O que você precisa?</span>
+        <textarea id="serviceDesc" rows="5" placeholder="Descreva o projeto/serviço com o máximo de detalhes possível..."></textarea>
+      </label>
+
+      <p class="hint">
+        Ao enviar, vamos abrir seu app de e-mail com a mensagem pronta.
+      </p>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-ghost" type="button" data-close="service">Cancelar</button>
+      <button class="btn btn-primary" type="button" id="serviceSendBtn">Enviar por e-mail</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
+
