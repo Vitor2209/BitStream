@@ -1,0 +1,495 @@
+/* ===================================
+   RESET & BASE
+   =================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(180deg, hsl(220, 15%, 8%) 0%, hsl(220, 15%, 4%) 100%);
+  color: hsl(0, 0%, 98%);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===================================
+   VARIÁVEIS CSS
+   =================================== */
+:root {
+  --gold: hsl(45, 100%, 50%);
+  --gold-dark: hsl(40, 100%, 40%);
+  --gold-light: hsl(45, 100%, 60%);
+  --purple: hsl(270, 60%, 45%);
+  --purple-light: hsl(270, 60%, 55%);
+  --dark-bg: hsl(220, 15%, 8%);
+  --dark-surface: hsl(220, 15%, 10%);
+  --dark-card: hsl(220, 15%, 14%);
+  --dark-border: hsl(220, 15%, 20%);
+  --text-primary: hsl(0, 0%, 98%);
+  --text-muted: hsl(220, 10%, 60%);
+  
+  --shadow-gold: 0 4px 24px hsla(45, 100%, 50%, 0.25);
+  --shadow-gold-hover: 0 8px 30px hsla(45, 100%, 50%, 0.4);
+  --shadow-card: 0 8px 32px hsla(0, 0%, 0%, 0.4);
+  
+  --gradient-gold: linear-gradient(135deg, hsl(45, 100%, 55%) 0%, hsl(40, 100%, 45%) 100%);
+  --gradient-purple: linear-gradient(135deg, hsl(270, 60%, 50%) 0%, hsl(280, 60%, 40%) 100%);
+  
+  --radius: 12px;
+  --radius-lg: 16px;
+  --transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ===================================
+   CONTAINER
+   =================================== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===================================
+   BOTÃO CTA
+   =================================== */
+.btn-cta {
+  display: inline-block;
+  background: var(--gradient-gold);
+  color: var(--dark-bg);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 16px 40px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-gold-hover);
+}
+
+.btn-cta:active {
+  transform: translateY(-1px);
+}
+
+.btn-cta-large {
+  font-size: 1.125rem;
+  padding: 20px 48px;
+}
+
+/* ===================================
+   HERO SECTION
+   =================================== */
+.hero {
+  padding: 80px 0 64px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero-content h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-muted) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-content p {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  max-width: 540px;
+}
+
+.hero-image img {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+@media (min-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ===================================
+   SOBRE O CONTEÚDO
+   =================================== */
+.sobre {
+  background: var(--gradient-purple);
+  padding: 80px 0;
+}
+
+.sobre-content {
+  text-align: right;
+}
+
+.sobre-text h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sobre-text p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  opacity: 0.95;
+  max-width: 700px;
+  margin-left: auto;
+}
+
+/* ===================================
+   AUTOR
+   =================================== */
+.autor {
+  padding: 96px 0;
+  background: var(--dark-surface);
+}
+
+.autor-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.autor-content h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.autor-content h3 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.autor-content p {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.autor-image img {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .autor-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .autor-image img {
+    margin: 0 0 0 auto;
+  }
+}
+
+/* ===================================
+   CTA URGÊNCIA
+   =================================== */
+.cta-urgencia {
+  background: hsl(220, 15%, 6%);
+  padding: 64px 0;
+  border-top: 1px solid var(--dark-border);
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.cta-urgencia-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.urgencia-text {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (min-width: 768px) {
+  .cta-urgencia-content {
+    flex-direction: row;
+    justify-content: center;
+    gap: 48px;
+  }
+}
+
+/* ===================================
+   GARANTIA
+   =================================== */
+.garantia {
+  padding: 96px 0;
+  background: var(--dark-bg);
+}
+
+.garantia-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.garantia-image img {
+  max-width: 280px;
+  margin: 0 auto;
+  filter: drop-shadow(0 8px 24px hsla(45, 100%, 50%, 0.2));
+}
+
+.garantia-content h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.garantia-content p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+}
+
+@media (min-width: 768px) {
+  .garantia-grid {
+    grid-template-columns: auto 1fr;
+  }
+  
+  .garantia-image img {
+    margin: 0;
+  }
+}
+
+/* ===================================
+   PREÇO / CHECKOUT
+   =================================== */
+.preco {
+  padding: 96px 0;
+  background: var(--dark-surface);
+}
+
+.preco-card {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-lg);
+  padding: 48px 32px;
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  position: relative;
+}
+
+.preco-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, hsla(45, 100%, 50%, 0.3) 0%, transparent 50%, hsla(270, 60%, 50%, 0.3) 100%);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.preco-card:hover::before {
+  opacity: 1;
+}
+
+.devices-icon {
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+.preco-dispositivos {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+.preco-label {
+  font-size: 1rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.preco-valor {
+  font-size: clamp(3rem, 8vw, 4.5rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 32px;
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+.footer {
+  padding: 48px 0;
+  background: hsl(220, 15%, 6%);
+  border-top: 1px solid var(--dark-border);
+  text-align: center;
+}
+
+.footer-seguranca {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-copy {
+  font-size: 0.875rem;
+  color: hsla(220, 10%, 60%, 0.6);
+}
+
+/* ===================================
+   BOTÃO FLUTUANTE
+   =================================== */
+.floating-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--gradient-gold);
+  color: var(--dark-bg);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 16px 32px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-gold);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: var(--transition);
+  animation: float-pulse 2s ease-in-out infinite;
+}
+
+.floating-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.floating-btn:hover {
+  animation: none;
+  transform: scale(1.05);
+  box-shadow: var(--shadow-gold-hover);
+}
+
+@keyframes float-pulse {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 4px 20px hsla(45, 100%, 50%, 0.3);
+  }
+  50% {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px hsla(45, 100%, 50%, 0.5);
+  }
+}
+
+/* ===================================
+   ANIMAÇÕES REVEAL
+   =================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===================================
+   RESPONSIVO MOBILE
+   =================================== */
+@media (max-width: 767px) {
+  .hero {
+    padding: 48px 0;
+    min-height: auto;
+  }
+  
+  .sobre-content {
+    text-align: center;
+  }
+  
+  .sobre-text p {
+    margin: 0 auto;
+  }
+  
+  .autor-content {
+    text-align: center;
+  }
+  
+  .garantia-content {
+    text-align: center;
+  }
+  
+  .preco-card {
+    padding: 32px 24px;
+  }
+}
+
