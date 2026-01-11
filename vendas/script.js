@@ -1,76 +1,37 @@
-// ===================================
-// SCROLL SUAVE PARA #CHECKOUT
-// ===================================
-document.querySelectorAll('a[href="#checkout"]').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.getElementById('checkout');
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-      });
-    }
-  });
-});
+// BitStream vendas - minimal JS (menu + minor UX)
+(function () {
+  const burger = document.getElementById("burger");
+  const mobileNav = document.getElementById("mobileNav");
 
-// ===================================
-// BOTÃO FLUTUANTE
-// ===================================
-const floatingBtn = document.getElementById('floatingBtn');
-
-function checkScrollPosition() {
-  const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-  
-  if (scrollPercent > 25) {
-    floatingBtn.classList.add('visible');
-  } else {
-    floatingBtn.classList.remove('visible');
+  function closeMenu() {
+    if (!mobileNav) return;
+    mobileNav.style.display = "none";
+    mobileNav.setAttribute("aria-hidden", "true");
+    burger?.setAttribute("aria-expanded", "false");
   }
-}
 
-window.addEventListener('scroll', checkScrollPosition);
-checkScrollPosition();
+  function openMenu() {
+    if (!mobileNav) return;
+    mobileNav.style.display = "block";
+    mobileNav.setAttribute("aria-hidden", "false");
+    burger?.setAttribute("aria-expanded", "true");
+  }
 
-floatingBtn.addEventListener('click', function() {
-  const target = document.getElementById('checkout');
-  if (target) {
-    target.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center'
+  if (burger && mobileNav) {
+    mobileNav.style.display = "none";
+    burger.addEventListener("click", () => {
+      const expanded = burger.getAttribute("aria-expanded") === "true";
+      expanded ? closeMenu() : openMenu();
+    });
+
+    // Close on link click
+    mobileNav.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", closeMenu);
+    });
+
+    // Close on resize up
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 980) closeMenu();
     });
   }
-});
-
-// ===================================
-// ANIMAÇÕES ON-SCROLL (REVEAL)
-// ===================================
-const revealElements = document.querySelectorAll('.reveal');
-
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-});
-
-revealElements.forEach(el => {
-  revealObserver.observe(el);
-});
-
-// ===================================
-// ANIMAÇÃO INICIAL (HERO)
-// ===================================
-document.addEventListener('DOMContentLoaded', function() {
-  // Adiciona classe visible ao hero após um pequeno delay
-  setTimeout(() => {
-    const hero = document.querySelector('.hero');
-    if (hero) {
-      hero.classList.add('visible');
-    }
-  }, 100);
-});
+})();

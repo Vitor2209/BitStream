@@ -1,122 +1,258 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="src/d80df792101e31b0b88650fefb67622a.jpg" type="image/x-icon">
-  <title>Site Profissional para Negócios Locais | £19.99</title>
-  <meta name="description" content="Criação de site profissional para restaurantes, cafés, barbearias e negócios locais. Design moderno, otimizado para mobile, com integração para reservas e pedidos. Por apenas £19.99.">
-  <meta name="author" content="Vitor Dutra Melo">
-  
-  <meta property="og:title" content="Site Profissional para Negócios Locais | £19.99">
-  <meta property="og:description" content="Atraia e fidelize clientes com um site otimizado para dispositivos móveis. Destaque-se da concorrência!">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
-  
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@vitordutra">
-  <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
-  
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Site Profissional para Negócios Locais | BitStream</title>
+  <meta name="description" content="Taxa de consultoria (£19.99) para diagnóstico + proposta do seu site. Após a compra, entro em contato e entrego um plano claro para seu negócio vender mais online." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" href="src/d80df792101e31b0b88650fefb67622a.jpg" />
 </head>
+
 <body>
-  <!-- HERO SECTION -->
-  <section class="hero reveal">
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <h1>Site Profissional para Negócios Locais: Presença Online Moderna e Funcional</h1>
-        <p>Atraia e fidelize clientes com um site otimizado para dispositivos móveis, fácil de navegar e com integração para reservas e pedidos. Destaque-se da concorrência e impulsione o crescimento do seu negócio local.</p>
-        <a href="https://pay.hotmart.com/L103788756J" class="btn-cta">COMPRAR AGORA</a>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <div class="brand">
+        <img src="src/bit.jpeg" alt="BitStream" width="34" height="34">
+        <span>BitStream</span>
       </div>
-      <div class="hero-image">
-        <img src="src/capa.png" alt="Exemplo de site profissional para negócios locais">
-      </div>
-    </div>
-  </section>
+      <nav class="topbar__nav">
+        <a href="#conteudo">O que você recebe</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn--ghost" href="#checkout">Comprar</a>
+      </nav>
 
-  <!-- SOBRE O CONTEÚDO -->
-  <section class="sobre reveal">
-    <div class="container sobre-content">
-      <div class="sobre-text">
-        <h2>SOBRE O CONTEÚDO</h2>
-        <p>Com o serviço de criação de site profissional, tenha uma presença online clara, moderna, funcional e confiável para o seu restaurante, café, barbearia, loja ou negócio local. Atraia e fidelize clientes com um site otimizado para dispositivos móveis, fácil de navegar e com integração para reservas e pedidos. Destaque-se da concorrência e impulsione o crescimento do seu negócio local com uma presença digital que transmite credibilidade e profissionalismo.</p>
-      </div>
+      <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </section>
 
-  <!-- AUTOR -->
-  <section class="autor reveal">
-    <div class="container autor-grid">
-      <div class="autor-content">
-        <h2>CONHEÇA MELHOR QUEM CRIOU O CONTEÚDO</h2>
-        <h3>Vitor Dutra Melo</h3>
-        <p>Olá! Meu nome é Vitor, sou engenheiro de software especializado na criação de sites profissionais para negócios locais no Reino Unido. Meu objetivo é ajudar sua empresa a transmitir mais credibilidade, facilitar o contato com clientes e aumentar as chances de vendas. Através de um atendimento direto, entendo suas necessidades e desenvolvo um site personalizado que representa a identidade do seu negócio, com design moderno, responsivo e otimizado para conversões.</p>
-      </div>
-      <div class="autor-image">
-        <img src="src/WhatsApp Image 2026-01-07 at 2.27.55 PM.jpeg" alt="Vitor Dutra Melo - Criador do conteúdo">
-      </div>
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <a href="#conteudo">O que você recebe</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn--primary" href="#checkout">Comprar agora</a>
     </div>
-  </section>
+  </header>
 
-  <!-- CTA URGÊNCIA -->
-  <section class="cta-urgencia reveal">
-    <div class="container cta-urgencia-content">
-      <a href="https://pay.hotmart.com/L103788756J" class="btn-cta btn-cta-large">COMPRAR AGORA</a>
-      <p class="urgencia-text">ESTA OFERTA PODE TERMINAR EM BREVE.</p>
-    </div>
-  </section>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="pill">Para cafés, restaurantes, barbearias e negócios locais 🇬🇧</p>
+          <h1>Seu site <span class="grad">profissional</span>, do jeito certo — com diagnóstico e proposta clara.</h1>
+          <p class="lead">
+            Antes de “sair fazendo”, eu analiso seu negócio e monto um plano de site com foco em
+            <strong>mais pedidos, reservas e contatos</strong>.
+          </p>
 
-  <!-- GARANTIA -->
-  <section class="garantia reveal">
-    <div class="container garantia-grid">
-      <div class="garantia-image">
-        <img src="src/garantia.png" alt="Selo de garantia de 7 dias">
-      </div>
-      <div class="garantia-content">
-        <h2>Garantia de 7 dias</h2>
-        <p>Seu dinheiro de volta sem perguntas até 7 dias após a compra.</p>
-      </div>
-    </div>
-  </section>
+          <ul class="checklist">
+            <li>✅ Diagnóstico do que está faltando no Google/Instagram</li>
+            <li>✅ Estrutura recomendada do site (seções + copy)</li>
+            <li>✅ Proposta com prazo, investimento e próximos passos</li>
+          </ul>
 
-  <!-- PREÇO / CHECKOUT -->
-  <section class="preco reveal" id="checkout">
-    <div class="container">
-      <div class="preco-card">
-        <div class="devices-icon">
-          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M8 21H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M12 17V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <rect x="6" y="6" width="4" height="7" rx="0.5" stroke="currentColor" stroke-width="1"/>
-            <rect x="14" y="8" width="3" height="5" rx="0.5" stroke="currentColor" stroke-width="1"/>
-          </svg>
+          <div class="hero__cta" id="checkout">
+            <a class="btn btn--primary" href="https://pay.hotmart.com/L103788756J" target="_blank" rel="noopener noreferrer">
+              Comprar agora — £19.99
+            </a>
+            <a class="btn btn--ghost" href="#conteudo">Ver detalhes</a>
+          </div>
+
+          <p class="micro">
+            🔒 Pagamento 100% seguro • Acesso imediato • <strong>Garantia de 7 dias</strong><br>
+            <span class="muted">Obs.: £19.99 é uma taxa de consultoria (diagnóstico + proposta). Se você fechar o projeto, eu abato essa taxa do valor final.</span>
+          </p>
         </div>
-        <p class="preco-dispositivos">Aproveite o conteúdo em qualquer dispositivo.</p>
-        <p class="preco-label">POR APENAS</p>
-        <p class="preco-valor">£ 19.99</p>
-        <a href="https://pay.hotmart.com/L103788756J" class="btn-cta btn-cta-large">COMPRAR AGORA</a>
-      </div>
-    </div>
-  </section>
 
-  <!-- RODAPÉ -->
+        <div class="hero__media">
+          <div class="mock">
+            <img src="src/capa.png" alt="Exemplo de site em dispositivos" loading="lazy">
+          </div>
+
+          <div class="price-card">
+            <div class="price-card__top">
+              <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M8 7h8M8 11h8M8 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <p class="muted">Taxa de consultoria</p>
+            </div>
+            <div class="price">£19.99</div>
+            <p class="muted small">Diagnóstico + proposta enviada por mensagem/email.</p>
+            <a class="btn btn--primary btn--full" href="https://pay.hotmart.com/L103788756J" target="_blank" rel="noopener noreferrer">
+              Comprar agora
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="section" id="conteudo">
+      <div class="container">
+        <div class="section__head">
+          <h2>O que você recebe após a compra</h2>
+          <p class="muted">Tudo por texto. Sem chamada. Objetivo: clareza + ação rápida.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>1) Diagnóstico rápido</h3>
+            <p>Eu avalio sua presença online (Google Maps, Instagram, links, menu, reservas/pedidos) e aponto o que está travando seus resultados.</p>
+          </article>
+
+          <article class="card">
+            <h3>2) Estrutura do site</h3>
+            <p>Você recebe a estrutura recomendada: seções, textos sugeridos e a melhor ordem para converter (mobile-first).</p>
+          </article>
+
+          <article class="card">
+            <h3>3) Proposta pronta</h3>
+            <p>Entrego prazo + investimento + o que entra no projeto (ex.: cardápio, galeria, botão WhatsApp, mapa, SEO básico).</p>
+          </article>
+
+          <article class="card">
+            <h3>Extras opcionais</h3>
+            <p>Se você quiser, eu incluo integrações como reservas/pedidos, links de delivery (Uber Eats/Deliveroo) e formulários.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section section--alt" id="como-funciona">
+      <div class="container">
+        <div class="section__head">
+          <h2>Como funciona (simples e rápido)</h2>
+          <p class="muted">3 passos para sair do “preciso de um site” e ir para “site pronto e vendendo”.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step__num">1</div>
+            <div>
+              <h3>Você compra</h3>
+              <p>Após o pagamento, você recebe o acesso e um link para me enviar as informações.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step__num">2</div>
+            <div>
+              <h3>Eu faço o diagnóstico</h3>
+              <p>Analiso seu caso e te faço algumas perguntas rápidas (por texto) para entender o objetivo.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step__num">3</div>
+            <div>
+              <h3>Você recebe a proposta</h3>
+              <p>Em até 24–48h, envio sua proposta completa e, se quiser, já iniciamos o projeto.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          <strong>Importante:</strong> a consultoria não é “curso”. É um serviço real para o seu negócio.
+        </div>
+      </div>
+    </section>
+
+    <!-- GUARANTEE -->
+    <section class="section" aria-label="Garantia">
+      <div class="container guarantee">
+        <img src="src/garantia.png" alt="Garantia de 7 dias" width="140" height="140" loading="lazy">
+        <div>
+          <h2>Garantia de 7 dias</h2>
+          <p class="muted">Se não fizer sentido para você, você pode pedir reembolso dentro de 7 dias, sem complicação.</p>
+        </div>
+        <a class="btn btn--primary" href="https://pay.hotmart.com/L103788756J" target="_blank" rel="noopener noreferrer">Comprar agora</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section section--alt">
+      <div class="container about">
+        <div>
+          <h2>Quem vai te atender</h2>
+          <p class="muted">
+            Sou <strong>Vitor Dutra Melo</strong>, engenheiro de software. Eu crio sites e sistemas para negócios
+            com foco em presença online clara, rápida e que gera contato.
+          </p>
+          <ul class="checklist">
+            <li>✅ Atendimento direto (sem agência)</li>
+            <li>✅ Design moderno + foco em conversão</li>
+            <li>✅ Otimizado para mobile</li>
+          </ul>
+        </div>
+
+        <div class="about__photo">
+          <img src="src/vitor.png" alt="Foto do Vitor" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section__head">
+          <h2>Perguntas frequentes</h2>
+          <p class="muted">Respostas rápidas para você decidir com confiança.</p>
+        </div>
+
+        <div class="faq">
+          <details class="faq__item">
+            <summary>Esse valor já é o site pronto?</summary>
+            <p>Não. £19.99 é uma taxa de consultoria: diagnóstico + proposta do seu site. Se você fechar o projeto, eu abato a taxa do valor final.</p>
+          </details>
+
+          <details class="faq__item">
+            <summary>Como você me envia a proposta?</summary>
+            <p>Por mensagem (WhatsApp/Instagram) ou por e-mail — como for melhor para você.</p>
+          </details>
+
+          <details class="faq__item">
+            <summary>Em quanto tempo eu recebo?</summary>
+            <p>Normalmente em 24–48h após você enviar as informações básicas (nome do negócio, endereço, cardápio/serviços, etc.).</p>
+          </details>
+
+          <details class="faq__item">
+            <summary>Você faz integração com reservas/pedidos?</summary>
+            <p>Sim. Se você já usa algum sistema, eu consigo integrar um botão/iframe/link no site (ex.: reservas e pedidos para retirada).</p>
+          </details>
+        </div>
+
+        <div class="center">
+          <a class="btn btn--primary" href="https://pay.hotmart.com/L103788756J" target="_blank" rel="noopener noreferrer">Comprar agora — £19.99</a>
+          <p class="micro muted">Pagamento seguro pela Hotmart.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer class="footer">
-    <div class="container">
-      <p class="footer-seguranca">🔒 PAGAMENTO 100% SEGURO COM ACESSO IMEDIATO</p>
-      <p class="footer-copy">© 2026 Vitor Dutra Melo. Todos os direitos reservados.</p>
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="src/bit.jpeg" alt="BitStream" width="28" height="28">
+        <span>BitStream</span>
+      </div>
+      <p class="micro muted">© 2026 Vitor Dutra Melo — Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <!-- BOTÃO FLUTUANTE -->
-  <button class="floating-btn" id="floatingBtn" aria-label="Comprar agora">
-    Comprar Agora
-  </button>
+  <a class="floating-cta" href="https://pay.hotmart.com/L103788756J" target="_blank" rel="noopener noreferrer" aria-label="Comprar agora">
+    Comprar agora
+  </a>
 
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
-
