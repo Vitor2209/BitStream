@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -11,15 +10,27 @@
 
   <header class="header">
     <h1>CONTROLE DE CONTATOS</h1>
-    <p>Nome • Tipo • Data • Status (salva no navegador)</p>
+    <p>País • Nome • Tipo • Data • Status • Follow-up (salvo no navegador)</p>
   </header>
+
+  <!-- ALERTA FOLLOW-UP -->
+  <div class="followup-bar" id="followupBar" style="display:none">
+    <div class="followup-bar__left">
+      <strong id="followupTitle">⚠️ Follow-ups</strong>
+      <span id="followupText">Você tem follow-ups pendentes.</span>
+    </div>
+    <div class="followup-bar__actions">
+      <button class="btn btn-primary btn-sm" id="btnViewFollowups" type="button">Ver agora</button>
+      <button class="btn btn-sm" id="btnDismissFollowups" type="button">Fechar</button>
+    </div>
+  </div>
 
   <main class="wrap">
     <section class="card">
       <div class="card-title">ADICIONAR CONTATO</div>
 
       <form id="form" class="form">
-        <div class="row">
+        <div class="row row-2">
           <div class="field">
             <label>Nome do cliente *</label>
             <input id="name" required placeholder="Ex: Sam’s Barbers" />
@@ -32,6 +43,12 @@
         </div>
 
         <div class="row">
+          <div class="field">
+            <label>País *</label>
+            <select id="country" required></select>
+            <div class="helper" id="tzHint">Hora local: —</div>
+          </div>
+
           <div class="field">
             <label>Data que mandei mensagem *</label>
             <input id="sentDate" type="date" required />
@@ -54,6 +71,7 @@
             <label>Status *</label>
             <select id="status" required>
               <option value="pending">🟡 Pendente</option>
+              <option value="sent" selected>📩 Mensagem enviada</option>
               <option value="replied">✅ Respondeu</option>
               <option value="no_reply">🔴 Não respondeu</option>
             </select>
@@ -62,16 +80,23 @@
           <div class="field">
             <label>Próximo follow-up (opcional)</label>
             <input id="followUp" type="date" />
+            <div class="helper">
+              Dica: follow-up em 2–3 dias costuma aumentar resposta.
+            </div>
           </div>
         </div>
 
         <div class="actions">
           <button class="btn btn-primary" type="submit">Salvar</button>
-          <button class="btn" type="button" id="btnExport">Exportar JSON</button>
+
+          <button class="btn" type="button" id="btnExportPdf">Exportar PDF</button>
+          <button class="btn" type="button" id="btnExportJson">Exportar JSON</button>
+
           <label class="btn btn-ghost file-btn">
             Importar JSON
             <input type="file" id="import" accept="application/json" hidden />
           </label>
+
           <button class="btn btn-danger" type="button" id="btnClear">Zerar tudo</button>
         </div>
       </form>
@@ -80,16 +105,51 @@
     <section class="card">
       <div class="card-title">LISTA DE CONTATOS</div>
 
-      <div class="legend">
-        <span class="pill green">✅ Respondeu</span>
-        <span class="pill yellow">🟡 Pendente</span>
-        <span class="pill red">🔴 Não respondeu</span>
+      <div class="toolbar">
+        <div class="legend">
+          <span class="pill blue">📩 Mensagem enviada</span>
+          <span class="pill green">✅ Respondeu</span>
+          <span class="pill yellow">🟡 Pendente</span>
+          <span class="pill red">🔴 Não respondeu</span>
+        </div>
+
+        <div class="filters">
+          <div class="filter">
+            <label>Filtrar por status</label>
+            <select id="filterStatus">
+              <option value="">Todos</option>
+              <option value="pending">🟡 Pendente</option>
+              <option value="sent">📩 Mensagem enviada</option>
+              <option value="replied">✅ Respondeu</option>
+              <option value="no_reply">🔴 Não respondeu</option>
+            </select>
+          </div>
+
+          <div class="filter">
+            <label>Filtrar por país</label>
+            <select id="filterCountry">
+              <option value="">Todos</option>
+            </select>
+          </div>
+
+          <div class="filter">
+            <label>Follow-up</label>
+            <select id="filterFollowup">
+              <option value="">Todos</option>
+              <option value="due">⚠️ Vencido / Hoje</option>
+              <option value="has">📅 Tem follow-up</option>
+              <option value="none">— Sem follow-up</option>
+            </select>
+          </div>
+        </div>
       </div>
 
       <div class="table-wrap">
         <table class="table">
           <thead>
             <tr>
+              <th>País</th>
+              <th>Hora local</th>
               <th>Nome do cliente</th>
               <th>Tipo</th>
               <th>Data</th>
@@ -109,17 +169,18 @@
     </section>
   </main>
 
-  <!-- Modal simples para editar -->
+  <!-- Modal editar -->
   <div class="modal-backdrop" id="modalBackdrop">
     <div class="modal">
       <div class="modal-header">
         <strong>Editar contato</strong>
-        <button class="x" id="btnClose">✕</button>
+        <button class="x" id="btnClose" type="button">✕</button>
       </div>
+
       <form id="editForm" class="modal-body">
         <input type="hidden" id="editId" />
 
-        <div class="row">
+        <div class="row row-2">
           <div class="field">
             <label>Nome</label>
             <input id="editName" required />
@@ -132,9 +193,16 @@
 
         <div class="row">
           <div class="field">
+            <label>País</label>
+            <select id="editCountry" required></select>
+            <div class="helper" id="editTzHint">Hora local: —</div>
+          </div>
+
+          <div class="field">
             <label>Data</label>
             <input id="editSentDate" type="date" required />
           </div>
+
           <div class="field">
             <label>Canal</label>
             <select id="editChannel">
@@ -147,14 +215,17 @@
               <option>Outro</option>
             </select>
           </div>
+
           <div class="field">
             <label>Status</label>
             <select id="editStatus" required>
               <option value="pending">🟡 Pendente</option>
+              <option value="sent">📩 Mensagem enviada</option>
               <option value="replied">✅ Respondeu</option>
               <option value="no_reply">🔴 Não respondeu</option>
             </select>
           </div>
+
           <div class="field">
             <label>Follow-up</label>
             <input id="editFollowUp" type="date" />
