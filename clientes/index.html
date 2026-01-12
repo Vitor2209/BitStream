@@ -1,0 +1,174 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Controle de Contatos (Básico)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="header">
+    <h1>CONTROLE DE CONTATOS</h1>
+    <p>Nome • Tipo • Data • Status (salva no navegador)</p>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <div class="card-title">ADICIONAR CONTATO</div>
+
+      <form id="form" class="form">
+        <div class="row">
+          <div class="field">
+            <label>Nome do cliente *</label>
+            <input id="name" required placeholder="Ex: Sam’s Barbers" />
+          </div>
+
+          <div class="field">
+            <label>Tipo de lugar *</label>
+            <input id="type" required placeholder="Ex: Barbearia / Café" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label>Data que mandei mensagem *</label>
+            <input id="sentDate" type="date" required />
+          </div>
+
+          <div class="field">
+            <label>Canal</label>
+            <select id="channel">
+              <option>Instagram</option>
+              <option>WhatsApp</option>
+              <option>Facebook</option>
+              <option>LinkedIn</option>
+              <option>Google Maps</option>
+              <option>Email</option>
+              <option>Outro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Status *</label>
+            <select id="status" required>
+              <option value="pending">🟡 Pendente</option>
+              <option value="replied">✅ Respondeu</option>
+              <option value="no_reply">🔴 Não respondeu</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Próximo follow-up (opcional)</label>
+            <input id="followUp" type="date" />
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Salvar</button>
+          <button class="btn" type="button" id="btnExport">Exportar JSON</button>
+          <label class="btn btn-ghost file-btn">
+            Importar JSON
+            <input type="file" id="import" accept="application/json" hidden />
+          </label>
+          <button class="btn btn-danger" type="button" id="btnClear">Zerar tudo</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="card-title">LISTA DE CONTATOS</div>
+
+      <div class="legend">
+        <span class="pill green">✅ Respondeu</span>
+        <span class="pill yellow">🟡 Pendente</span>
+        <span class="pill red">🔴 Não respondeu</span>
+      </div>
+
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nome do cliente</th>
+              <th>Tipo</th>
+              <th>Data</th>
+              <th>Canal</th>
+              <th>Status</th>
+              <th>Follow-up</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+
+        <div class="empty" id="empty">
+          Nenhum contato ainda.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal simples para editar -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <strong>Editar contato</strong>
+        <button class="x" id="btnClose">✕</button>
+      </div>
+      <form id="editForm" class="modal-body">
+        <input type="hidden" id="editId" />
+
+        <div class="row">
+          <div class="field">
+            <label>Nome</label>
+            <input id="editName" required />
+          </div>
+          <div class="field">
+            <label>Tipo</label>
+            <input id="editType" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label>Data</label>
+            <input id="editSentDate" type="date" required />
+          </div>
+          <div class="field">
+            <label>Canal</label>
+            <select id="editChannel">
+              <option>Instagram</option>
+              <option>WhatsApp</option>
+              <option>Facebook</option>
+              <option>LinkedIn</option>
+              <option>Google Maps</option>
+              <option>Email</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Status</label>
+            <select id="editStatus" required>
+              <option value="pending">🟡 Pendente</option>
+              <option value="replied">✅ Respondeu</option>
+              <option value="no_reply">🔴 Não respondeu</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Follow-up</label>
+            <input id="editFollowUp" type="date" />
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Salvar alterações</button>
+          <button class="btn" type="button" id="btnCancel">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
