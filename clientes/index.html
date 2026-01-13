@@ -1,61 +1,62 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en-GB">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Controle de Contatos (Básico)</title>
+  <title>Contact Tracker (Basic)</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="shortcut icon" href="../assets/ChatGPT Image 28 de nov. de 2025, 11_19_43.png" type="image/x-icon">
 </head>
 <body>
 
   <header class="header">
-    <h1>CONTROLE DE CONTATOS</h1>
-    <p>País • Nome • Tipo • Data • Status • Follow-up (salvo no navegador)</p>
+    <h1>CONTACT TRACKER</h1>
+    <p>Country • Name • Business type • Date • Status • Follow-up (saved in your browser)</p>
   </header>
 
-  <!-- ALERTA FOLLOW-UP -->
+  <!-- FOLLOW-UP ALERT -->
   <div class="followup-bar" id="followupBar" style="display:none">
     <div class="followup-bar__left">
       <strong id="followupTitle">⚠️ Follow-ups</strong>
-      <span id="followupText">Você tem follow-ups pendentes.</span>
+      <span id="followupText">You have pending follow-ups.</span>
     </div>
     <div class="followup-bar__actions">
-      <button class="btn btn-primary btn-sm" id="btnViewFollowups" type="button">Ver agora</button>
-      <button class="btn btn-sm" id="btnDismissFollowups" type="button">Fechar</button>
+      <button class="btn btn-primary btn-sm" id="btnViewFollowups" type="button">View now</button>
+      <button class="btn btn-sm" id="btnDismissFollowups" type="button">Dismiss</button>
     </div>
   </div>
 
   <main class="wrap">
     <section class="card">
-      <div class="card-title">ADICIONAR CONTATO</div>
+      <div class="card-title">ADD CONTACT</div>
 
       <form id="form" class="form">
         <div class="row row-2">
           <div class="field">
-            <label>Nome do cliente *</label>
-            <input id="name" required placeholder="Ex: Sam’s Barbers" />
+            <label>Client name *</label>
+            <input id="name" required placeholder="e.g., Sam’s Barbers" />
           </div>
 
           <div class="field">
-            <label>Tipo de lugar *</label>
-            <input id="type" required placeholder="Ex: Barbearia / Café" />
+            <label>Business type *</label>
+            <input id="type" required placeholder="e.g., Barbershop / Café" />
           </div>
         </div>
 
         <div class="row">
           <div class="field">
-            <label>País *</label>
+            <label>Country *</label>
             <select id="country" required></select>
-            <div class="helper" id="tzHint">Hora local: —</div>
+            <div class="helper" id="tzHint">Local time: —</div>
           </div>
 
           <div class="field">
-            <label>Data que mandei mensagem *</label>
+            <label>Message sent date *</label>
             <input id="sentDate" type="date" required />
           </div>
 
           <div class="field">
-            <label>Canal</label>
+            <label>Channel</label>
             <select id="channel">
               <option>Instagram</option>
               <option>WhatsApp</option>
@@ -63,82 +64,89 @@
               <option>LinkedIn</option>
               <option>Google Maps</option>
               <option>Email</option>
-              <option>Outro</option>
+              <option>Other</option>
             </select>
           </div>
 
           <div class="field">
             <label>Status *</label>
             <select id="status" required>
-              <option value="pending">🟡 Pendente</option>
-              <option value="sent" selected>📩 Mensagem enviada</option>
-              <option value="replied">✅ Respondeu</option>
-              <option value="no_reply">🔴 Não respondeu</option>
+              <option value="pending">🟡 Pending</option>
+              <option value="sent" selected>📩 Message sent</option>
+              <option value="replied">✅ Replied</option>
+              <option value="no_reply">🔴 No reply</option>
             </select>
           </div>
 
+          <!-- WhatsApp (conditional) -->
+          <div class="field" id="whatsappField" style="display:none">
+            <label>WhatsApp number</label>
+            <input id="whatsappNumber" inputmode="tel" placeholder="e.g., +44 7xxx xxx xxx" />
+            <div class="helper">Shown only when the channel is WhatsApp.</div>
+          </div>
+
           <div class="field">
-            <label>Próximo follow-up (opcional)</label>
+            <label>Next follow-up (optional)</label>
             <input id="followUp" type="date" />
             <div class="helper">
-              Dica: follow-up em 2–3 dias costuma aumentar resposta.
+              Tip: following up in 2–3 days often increases reply rates.
             </div>
           </div>
         </div>
 
         <div class="actions">
-          <button class="btn btn-primary" type="submit">Salvar</button>
+          <button class="btn btn-primary" type="submit">Save</button>
 
-          <button class="btn" type="button" id="btnExportPdf">Exportar PDF</button>
-          <button class="btn" type="button" id="btnExportJson">Exportar JSON</button>
+          <button class="btn" type="button" id="btnExportPdf">Export PDF</button>
+          <button class="btn" type="button" id="btnExportJson">Export JSON</button>
 
           <label class="btn btn-ghost file-btn">
-            Importar JSON
+            Import JSON
             <input type="file" id="import" accept="application/json" hidden />
           </label>
 
-          <button class="btn btn-danger" type="button" id="btnClear">Zerar tudo</button>
+          <button class="btn btn-danger" type="button" id="btnClear">Clear all</button>
         </div>
       </form>
     </section>
 
     <section class="card">
-      <div class="card-title">LISTA DE CONTATOS</div>
+      <div class="card-title">CONTACT LIST</div>
 
       <div class="toolbar">
         <div class="legend">
-          <span class="pill blue">📩 Mensagem enviada</span>
-          <span class="pill green">✅ Respondeu</span>
-          <span class="pill yellow">🟡 Pendente</span>
-          <span class="pill red">🔴 Não respondeu</span>
+          <span class="pill blue">📩 Message sent</span>
+          <span class="pill green">✅ Replied</span>
+          <span class="pill yellow">🟡 Pending</span>
+          <span class="pill red">🔴 No reply</span>
         </div>
 
         <div class="filters">
           <div class="filter">
-            <label>Filtrar por status</label>
+            <label>Filter by status</label>
             <select id="filterStatus">
-              <option value="">Todos</option>
-              <option value="pending">🟡 Pendente</option>
-              <option value="sent">📩 Mensagem enviada</option>
-              <option value="replied">✅ Respondeu</option>
-              <option value="no_reply">🔴 Não respondeu</option>
+              <option value="">All</option>
+              <option value="pending">🟡 Pending</option>
+              <option value="sent">📩 Message sent</option>
+              <option value="replied">✅ Replied</option>
+              <option value="no_reply">🔴 No reply</option>
             </select>
           </div>
 
           <div class="filter">
-            <label>Filtrar por país</label>
+            <label>Filter by country</label>
             <select id="filterCountry">
-              <option value="">Todos</option>
+              <option value="">All</option>
             </select>
           </div>
 
           <div class="filter">
             <label>Follow-up</label>
             <select id="filterFollowup">
-              <option value="">Todos</option>
-              <option value="due">⚠️ Vencido / Hoje</option>
-              <option value="has">📅 Tem follow-up</option>
-              <option value="none">— Sem follow-up</option>
+              <option value="">All</option>
+              <option value="due">⚠️ Due / Today</option>
+              <option value="has">📅 Has follow-up</option>
+              <option value="none">— No follow-up</option>
             </select>
           </div>
         </div>
@@ -148,32 +156,33 @@
         <table class="table">
           <thead>
             <tr>
-              <th>País</th>
-              <th>Hora local</th>
-              <th>Nome do cliente</th>
-              <th>Tipo</th>
-              <th>Data</th>
-              <th>Canal</th>
+              <th>Country</th>
+              <th>Local time</th>
+              <th>Client name</th>
+              <th>Business type</th>
+              <th class="whatsapp-col">WhatsApp</th>
+              <th>Date</th>
+              <th>Channel</th>
               <th>Status</th>
               <th>Follow-up</th>
-              <th>Ações</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody id="tbody"></tbody>
         </table>
 
         <div class="empty" id="empty">
-          Nenhum contato ainda.
+          No contacts yet.
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Modal editar -->
+  <!-- Edit modal -->
   <div class="modal-backdrop" id="modalBackdrop">
     <div class="modal">
       <div class="modal-header">
-        <strong>Editar contato</strong>
+        <strong>Edit contact</strong>
         <button class="x" id="btnClose" type="button">✕</button>
       </div>
 
@@ -182,29 +191,29 @@
 
         <div class="row row-2">
           <div class="field">
-            <label>Nome</label>
+            <label>Name</label>
             <input id="editName" required />
           </div>
           <div class="field">
-            <label>Tipo</label>
+            <label>Business type</label>
             <input id="editType" required />
           </div>
         </div>
 
         <div class="row">
           <div class="field">
-            <label>País</label>
+            <label>Country</label>
             <select id="editCountry" required></select>
-            <div class="helper" id="editTzHint">Hora local: —</div>
+            <div class="helper" id="editTzHint">Local time: —</div>
           </div>
 
           <div class="field">
-            <label>Data</label>
+            <label>Date</label>
             <input id="editSentDate" type="date" required />
           </div>
 
           <div class="field">
-            <label>Canal</label>
+            <label>Channel</label>
             <select id="editChannel">
               <option>Instagram</option>
               <option>WhatsApp</option>
@@ -212,18 +221,25 @@
               <option>LinkedIn</option>
               <option>Google Maps</option>
               <option>Email</option>
-              <option>Outro</option>
+              <option>Other</option>
             </select>
           </div>
 
           <div class="field">
             <label>Status</label>
             <select id="editStatus" required>
-              <option value="pending">🟡 Pendente</option>
-              <option value="sent">📩 Mensagem enviada</option>
-              <option value="replied">✅ Respondeu</option>
-              <option value="no_reply">🔴 Não respondeu</option>
+              <option value="pending">🟡 Pending</option>
+              <option value="sent">📩 Message sent</option>
+              <option value="replied">✅ Replied</option>
+              <option value="no_reply">🔴 No reply</option>
             </select>
+          </div>
+
+          <!-- WhatsApp (conditional) -->
+          <div class="field" id="editWhatsappField" style="display:none">
+            <label>WhatsApp number</label>
+            <input id="editWhatsappNumber" inputmode="tel" placeholder="e.g., +44 7xxx xxx xxx" />
+            <div class="helper">Shown only when the channel is WhatsApp.</div>
           </div>
 
           <div class="field">
@@ -233,8 +249,8 @@
         </div>
 
         <div class="actions">
-          <button class="btn btn-primary" type="submit">Salvar alterações</button>
-          <button class="btn" type="button" id="btnCancel">Cancelar</button>
+          <button class="btn btn-primary" type="submit">Save changes</button>
+          <button class="btn" type="button" id="btnCancel">Cancel</button>
         </div>
       </form>
     </div>

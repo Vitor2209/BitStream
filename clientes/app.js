@@ -14,6 +14,10 @@
     followUp: $("followUp"),
     tzHint: $("tzHint"),
 
+    // WhatsApp (new)
+    whatsappField: $("whatsappField"),
+    whatsappNumber: $("whatsappNumber"),
+
     tbody: $("tbody"),
     empty: $("empty"),
 
@@ -48,9 +52,13 @@
     editStatus: $("editStatus"),
     editFollowUp: $("editFollowUp"),
     editTzHint: $("editTzHint"),
+
+    // WhatsApp (new, modal)
+    editWhatsappField: $("editWhatsappField"),
+    editWhatsappNumber: $("editWhatsappNumber"),
   };
 
-  // País -> Timezone (para calcular hora local)
+  // Country -> Timezone (for local time)
   const COUNTRY_OPTIONS = [
     { label: "UK", flag: "🇬🇧", tz: "Europe/London" },
     { label: "Ireland", flag: "🇮🇪", tz: "Europe/Dublin" },
@@ -100,32 +108,39 @@
     return found?.tz || "";
   }
 
-  // popular selects de país (form + modal)
+  // Populate country selects (form + modal)
   function fillCountrySelect(selectEl){
     selectEl.innerHTML = COUNTRY_OPTIONS.map(o => `<option>${countryText(o)}</option>`).join("");
   }
   fillCountrySelect(els.country);
   fillCountrySelect(els.editCountry);
 
-  // default
+  // Defaults
   els.country.value = countryText(COUNTRY_OPTIONS[0]); // 🇬🇧 UK
   els.sentDate.value = todayIso();
 
-  // Hora local / aviso de fuso (form)
+  // Local time hint (form)
   els.country.addEventListener("change", () => updateCountryHint(els.country.value, els.tzHint));
   updateCountryHint(els.country.value, els.tzHint);
 
-  // Hora local / aviso de fuso (modal)
+  // Local time hint (modal)
   els.editCountry.addEventListener("change", () => updateCountryHint(els.editCountry.value, els.editTzHint));
 
+  // WhatsApp field toggles
+  els.channel.addEventListener("change", () => toggleWhatsappField(false));
+  els.editChannel.addEventListener("change", () => toggleWhatsappField(true));
+  toggleWhatsappField(false);
+  toggleWhatsappField(true);
+
+  // Data
   let data = load();
 
-  // filtros
+  // Filters
   els.filterStatus.addEventListener("change", render);
   els.filterCountry.addEventListener("change", render);
   els.filterFollowup.addEventListener("change", render);
 
-  // followup bar actions
+  // Follow-up bar actions
   els.btnViewFollowups.addEventListener("click", () => {
     els.filterFollowup.value = "due";
     render();
@@ -135,15 +150,15 @@
     els.followupBar.style.display = "none";
   });
 
-  // add
+  // Add
   els.form.addEventListener("submit", (e) => {
     e.preventDefault();
     add();
   });
 
-  // export/import
+  // Export/Import
   els.btnExportJson.addEventListener("click", () => {
-    download(`contatos-backup-${todayIso()}.json`, JSON.stringify({ version: 5, data }, null, 2), "application/json");
+    download(`contacts-backup-${todayIso()}.json`, JSON.stringify({ version: 5, data }, null, 2), "application/json");
   });
 
   els.import.addEventListener("change", async (e) => {
@@ -151,31 +166,32 @@
     if (!f) return;
     try{
       const obj = JSON.parse(await f.text());
-      if (!obj || !Array.isArray(obj.data)) throw new Error("Arquivo inválido");
+      if (!obj || !Array.isArray(obj.data)) throw new Error("Invalid file");
       const byId = new Map(data.map(x => [x.id, x]));
       obj.data.forEach(x => byId.set(x.id, normalize(x)));
       data = Array.from(byId.values());
       save();
       render();
-      alert("Importado!");
+      alert("Imported!");
     } catch (err){
-      alert("Erro: " + (err?.message || err));
+      alert("Error: " + (err?.message || err));
     } finally {
       e.target.value = "";
     }
   });
 
   els.btnClear.addEventListener("click", () => {
-    if (!confirm("Apagar tudo?")) return;
+    if (!confirm("Delete everything?")) return;
     data = [];
     save();
     render();
+    renderFollowupBar();
   });
 
-  // pdf
+  // PDF
   els.btnExportPdf.addEventListener("click", () => exportPdf());
 
-  // modal
+  // Modal
   els.btnClose.addEventListener("click", closeModal);
   els.btnCancel.addEventListener("click", closeModal);
   els.modalBackdrop.addEventListener("click", (e) => { if (e.target === els.modalBackdrop) closeModal(); });
@@ -185,21 +201,64 @@
     saveEdit();
   });
 
-  // Atualiza hints de fuso a cada 30s (pra hora local não ficar velha)
+  // Update hints every 30s (time + follow-up bar)
   setInterval(() => {
     updateCountryHint(els.country.value, els.tzHint);
     if (els.modalBackdrop.style.display === "block") {
       updateCountryHint(els.editCountry.value, els.editTzHint);
     }
-    renderFollowupBar(); // atualiza alerta
-    // não chama render() aqui pra não ficar pesado
+    renderFollowupBar();
   }, 30000);
 
-  // render inicial
+  // Initial render
   render();
   renderFollowupBar();
 
+  // ===== WhatsApp behaviour =====
+  function toggleWhatsappField(isModal){
+    const channelEl = isModal ? els.editChannel : els.channel;
+    const fieldEl = isModal ? els.editWhatsappField : els.whatsappField;
+    const inputEl = isModal ? els.editWhatsappNumber : els.whatsappNumber;
+
+    // In case you're still using the old HTML, fail safely:
+    if (!fieldEl || !inputEl || !channelEl) return;
+
+    const isWa = String(channelEl.value || "").toLowerCase() === "whatsapp";
+
+    fieldEl.style.display = isWa ? "" : "none";
+    inputEl.required = isWa;
+
+    // If user changes away from WhatsApp, clear the number to avoid confusion
+    if (!isWa) inputEl.value = "";
+  }
+
+  function getWhatsappFromForm(){
+    const isWa = String(els.channel.value || "").toLowerCase() === "whatsapp";
+    if (!isWa) return "";
+    return normalisePhone(els.whatsappNumber?.value || "");
+  }
+
+  function getWhatsappFromEditForm(){
+    const isWa = String(els.editChannel.value || "").toLowerCase() === "whatsapp";
+    if (!isWa) return "";
+    return normalisePhone(els.editWhatsappNumber?.value || "");
+  }
+
+  function normalisePhone(raw){
+    const v = String(raw || "").trim();
+    if (!v) return "";
+    // Keep digits, spaces, +, (), -
+    return v.replace(/[^\d+\s()-]/g, "").trim();
+  }
+
+  // ===== CRUD =====
   function add(){
+    // WhatsApp validation (only if WhatsApp selected)
+    if (String(els.channel.value || "").toLowerCase() === "whatsapp") {
+      const w = normalisePhone(els.whatsappNumber?.value || "");
+      if (!w) return alert("Please enter a WhatsApp number.");
+    }
+
     const item = normalize({
       id: cryptoId(),
       country: els.country.value,
@@ -208,13 +267,14 @@
       sentDate: els.sentDate.value,
       channel: els.channel.value,
       status: els.status.value,
-      followUp: els.followUp.value || ""
+      followUp: els.followUp.value || "",
+      whatsapp: getWhatsappFromForm()
     });
 
-    if (!item.name) return alert("Nome do cliente obrigatório.");
-    if (!item.type) return alert("Tipo do lugar obrigatório.");
-    if (!item.country) return alert("País obrigatório.");
-    if (!item.sentDate) return alert("Data obrigatória.");
+    if (!item.name) return alert("Client name is required.");
+    if (!item.type) return alert("Business type is required.");
+    if (!item.country) return alert("Country is required.");
+    if (!item.sentDate) return alert("Date is required.");
 
     data.unshift(item);
     save();
@@ -226,6 +286,8 @@
     els.type.value = "";
     els.status.value = "sent";
     els.followUp.value = "";
+    if (els.whatsappNumber) els.whatsappNumber.value = "";
+    toggleWhatsappField(false);
     els.name.focus();
   }
 
@@ -242,6 +304,10 @@
     els.editStatus.value = item.status;
     els.editFollowUp.value = item.followUp || "";
 
+    // WhatsApp number in modal
+    if (els.editWhatsappNumber) els.editWhatsappNumber.value = item.whatsapp || "";
+    toggleWhatsappField(true);
+
     updateCountryHint(els.editCountry.value, els.editTzHint);
 
     els.modalBackdrop.style.display = "block";
@@ -253,6 +319,12 @@
     const idx = data.findIndex(x => x.id === id);
     if (idx < 0) return;
 
+    // WhatsApp validation (only if WhatsApp selected)
+    if (String(els.editChannel.value || "").toLowerCase() === "whatsapp") {
+      const w = normalisePhone(els.editWhatsappNumber?.value || "");
+      if (!w) return alert("Please enter a WhatsApp number.");
+    }
+
     data[idx] = normalize({
       id,
       country: els.editCountry.value,
@@ -261,7 +333,8 @@
       sentDate: els.editSentDate.value,
       channel: els.editChannel.value,
       status: els.editStatus.value,
-      followUp: els.editFollowUp.value || ""
+      followUp: els.editFollowUp.value || "",
+      whatsapp: getWhatsappFromEditForm()
     });
 
     save();
@@ -274,7 +347,7 @@
   function removeItem(id){
     const item = data.find(x => x.id === id);
     if (!item) return;
-    if (!confirm(`Excluir "${item.name}"?`)) return;
+    if (!confirm(`Delete "${item.name}"?`)) return;
     data = data.filter(x => x.id !== id);
     save();
     refreshCountryFilterOptions();
@@ -291,6 +364,7 @@
     renderFollowupBar();
   }
 
+  // ===== filters =====
   function applyFilters(list){
     const st = els.filterStatus.value;
     const c = els.filterCountry.value;
@@ -328,10 +402,10 @@
 
   function rowHtml(i){
     const statusText =
-      i.status === "replied" ? "✅ Respondeu" :
-      i.status === "sent" ? "📩 Mensagem enviada" :
-      i.status === "pending" ? "🟡 Pendente" :
-      "🔴 Não respondeu";
+      i.status === "replied" ? "✅ Replied" :
+      i.status === "sent" ? "📩 Message sent" :
+      i.status === "pending" ? "🟡 Pending" :
+      "🔴 No reply";
 
     const follow = i.followUp ? fmt(i.followUp) : `<span class="small">—</span>`;
     const due = isFollowupDue(i.followUp) && i.status !== "replied";
@@ -339,26 +413,29 @@
     const tz = tzFromCountryText(i.country);
     const { timeText, badHour } = tz ? getLocalTime(tz) : { timeText: "—", badHour: false };
 
+    const whatsappCell = i.whatsapp ? esc(i.whatsapp) : `<span class="small">—</span>`;
+
     return `
       <tr>
         <td>${esc(i.country)}</td>
         <td><span class="tz ${badHour ? "bad" : ""}">${esc(timeText)}</span></td>
         <td><b>${esc(i.name)}</b></td>
         <td>${esc(i.type)}</td>
+        <td>${whatsappCell}</td>
         <td>${fmt(i.sentDate)}</td>
         <td>${esc(i.channel)}</td>
         <td>
           <div class="quick">
-            <button class="qbtn sent" data-qsent="${i.id}" type="button">📩 Enviada</button>
-            <button class="qbtn replied" data-qrep="${i.id}" type="button">✅ Respondeu</button>
-            <button class="qbtn no_reply" data-qno="${i.id}" type="button">🔴 Não</button>
+            <button class="qbtn sent" data-qsent="${i.id}" type="button">📩 Sent</button>
+            <button class="qbtn replied" data-qrep="${i.id}" type="button">✅ Replied</button>
+            <button class="qbtn no_reply" data-qno="${i.id}" type="button">🔴 No</button>
           </div>
           <span class="status ${i.status}">${statusText}</span>
         </td>
         <td>${due ? `<b style="color:#b91c1c">${follow}</b>` : follow}</td>
         <td>
-          <button class="icon-btn" data-edit="${i.id}" type="button">Editar</button>
-          <button class="icon-btn del" data-del="${i.id}" type="button">Excluir</button>
+          <button class="icon-btn" data-edit="${i.id}" type="button">Edit</button>
+          <button class="icon-btn del" data-del="${i.id}" type="button">Delete</button>
         </td>
       </tr>
     `;
@@ -372,12 +449,12 @@
       return;
     }
 
-    const today = dueList.filter(x => x.followUp && x.followUp === todayIso()).length;
-    const overdue = dueList.length - today;
+    const todayCount = dueList.filter(x => x.followUp && x.followUp === todayIso()).length;
+    const overdue = dueList.length - todayCount;
 
-    els.followupTitle.textContent = "⚠️ Follow-ups pendentes";
+    els.followupTitle.textContent = "⚠️ Follow-ups due";
     els.followupText.textContent =
-      `Você tem ${dueList.length} (Hoje: ${today} • Vencidos: ${overdue}). Clique em “Ver agora”.`;
+      `You have ${dueList.length} (Today: ${todayCount} • Overdue: ${overdue}). Click “View now”.`;
 
     els.followupBar.style.display = "flex";
   }
@@ -386,30 +463,30 @@
     if (!iso) return false;
     const f = parseIsoToDate(iso);
     const t = parseIsoToDate(todayIso());
-    return f <= t; // vencido ou hoje
+    return f <= t; // overdue or today
   }
 
-  // ===== Timezone / hora local =====
+  // ===== Timezone / Local time =====
   function updateCountryHint(countryTextValue, hintEl){
     const tz = tzFromCountryText(countryTextValue);
     if (!tz) {
       hintEl.classList.remove("warn");
-      hintEl.textContent = "Hora local: —";
+      hintEl.textContent = "Local time: —";
       return;
     }
 
     const { timeText, badHour } = getLocalTime(tz);
     if (badHour) {
       hintEl.classList.add("warn");
-      hintEl.textContent = `Hora local: ${timeText} • ⚠️ Fora de 09:00–19:00`;
+      hintEl.textContent = `Local time: ${timeText} • ⚠️ Outside 09:00–19:00`;
     } else {
       hintEl.classList.remove("warn");
-      hintEl.textContent = `Hora local: ${timeText} • OK (09:00–19:00)`;
+      hintEl.textContent = `Local time: ${timeText} • OK (09:00–19:00)`;
     }
   }
 
   function getLocalTime(timeZone){
-    const parts = new Intl.DateTimeFormat("pt-BR", {
+    const parts = new Intl.DateTimeFormat("en-GB", {
       timeZone,
       hour: "2-digit",
       minute: "2-digit",
@@ -420,17 +497,16 @@
     const mm = parts.find(p => p.type === "minute")?.value ?? "00";
     const timeText = `${String(hh).padStart(2,"0")}:${mm}`;
 
-    // "horário ruim" fora de 09:00-19:00
     const badHour = (hh < 9 || hh >= 19);
     return { timeText, badHour };
   }
 
-  // ===== filtros país =====
+  // ===== Country filter options =====
   function refreshCountryFilterOptions(forceKeepSelected = true){
     const unique = Array.from(new Set(data.map(x => x.country))).sort((a,b) => a.localeCompare(b));
 
     const current = els.filterCountry.value;
-    const base = `<option value="">Todos</option>`;
+    const base = `<option value="">All</option>`;
     const opts = unique.map(c => `<option value="${escAttr(c)}">${esc(c)}</option>`).join("");
     els.filterCountry.innerHTML = base + opts;
 
@@ -445,12 +521,13 @@
 
     const rowsHtml = filtered.map(i => {
       const statusText =
-        i.status === "replied" ? "Respondeu" :
-        i.status === "sent" ? "Mensagem enviada" :
-        i.status === "pending" ? "Pendente" : "Não respondeu";
+        i.status === "replied" ? "Replied" :
+        i.status === "sent" ? "Message sent" :
+        i.status === "pending" ? "Pending" : "No reply";
 
       const tz = tzFromCountryText(i.country);
       const localTime = tz ? getLocalTime(tz).timeText : "-";
+      const wa = i.whatsapp ? esc(i.whatsapp) : "-";
 
       return `
         <tr>
@@ -458,6 +535,7 @@
           <td>${esc(localTime)}</td>
           <td>${esc(i.name)}</td>
           <td>${esc(i.type)}</td>
+          <td>${wa}</td>
           <td>${fmt(i.sentDate)}</td>
           <td>${esc(i.channel)}</td>
           <td>${esc(statusText)}</td>
@@ -468,10 +546,10 @@
 
     const html = `
       <!doctype html>
-      <html lang="pt-BR">
+      <html lang="en-GB">
       <head>
         <meta charset="utf-8" />
-        <title>Export PDF - Contatos</title>
+        <title>PDF Export - Contacts</title>
         <style>
           body{ font-family: Arial, sans-serif; padding:20px; color:#111; }
           h1{ margin:0 0 6px; font-size:18px; }
@@ -483,23 +561,24 @@
         </style>
       </head>
       <body>
-        <h1>Controle de Contatos</h1>
-        <p>Gerado em: ${new Date().toLocaleString()}</p>
+        <h1>Contact Tracker</h1>
+        <p>Generated: ${new Date().toLocaleString("en-GB")}</p>
         <table>
           <thead>
             <tr>
-              <th>País</th>
-              <th>Hora local</th>
-              <th>Nome do cliente</th>
-              <th>Tipo</th>
-              <th>Data</th>
-              <th>Canal</th>
+              <th>Country</th>
+              <th>Local time</th>
+              <th>Client name</th>
+              <th>Business type</th>
+              <th>WhatsApp</th>
+              <th>Date</th>
+              <th>Channel</th>
               <th>Status</th>
               <th>Follow-up</th>
             </tr>
           </thead>
           <tbody>
-            ${rowsHtml || `<tr><td colspan="8">Nenhum registro</td></tr>`}
+            ${rowsHtml || `<tr><td colspan="9">No records</td></tr>`}
           </tbody>
         </table>
 
@@ -509,13 +588,13 @@
     `;
 
     const w = window.open("", "_blank");
-    if (!w) return alert("Pop-up bloqueado. Permita pop-ups para exportar o PDF.");
+    if (!w) return alert("Pop-up blocked. Please allow pop-ups to export the PDF.");
     w.document.open();
     w.document.write(html);
     w.document.close();
   }
 
-  // ===== storage =====
+  // ===== Storage =====
   function load(){
     try{
       const raw = localStorage.getItem(KEY);
@@ -533,6 +612,7 @@
   }
 
   function normalize(obj){
+    // Backwards compatible: old records may not have whatsapp
     return {
       id: String(obj.id || cryptoId()),
       country: String(obj.country || countryText(COUNTRY_OPTIONS[0])),
@@ -541,7 +621,8 @@
       sentDate: obj.sentDate ? String(obj.sentDate) : todayIso(),
       channel: String(obj.channel || "Instagram"),
       status: ["replied","pending","sent","no_reply"].includes(obj.status) ? obj.status : "sent",
-      followUp: obj.followUp ? String(obj.followUp) : ""
+      followUp: obj.followUp ? String(obj.followUp) : "",
+      whatsapp: obj.whatsapp ? String(obj.whatsapp).trim() : ""
     };
   }
 
@@ -555,11 +636,11 @@
   }
 
   function parseIsoToDate(iso){
-    // normaliza para meia-noite local
     const [y,m,d] = iso.split("-").map(Number);
     return new Date(y, (m-1), d, 0, 0, 0, 0);
   }
 
+  // UK-style display (dd/mm/yyyy)
   function fmt(iso){
     const [y,m,d] = iso.split("-");
     return `${d}/${m}/${y}`;
@@ -574,7 +655,6 @@
   }
 
   function escAttr(s){
-    // para value=""
     return String(s ?? "").replaceAll('"',"&quot;");
   }
 
