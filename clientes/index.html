@@ -1,261 +1,294 @@
-<!doctype html>
-<html lang="en-GB">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contact Tracker (Basic)</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="shortcut icon" href="../assets/ChatGPT Image 28 de nov. de 2025, 11_19_43.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini CRM - Gestão de Contatos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
-
-  <header class="header">
-    <h1>CONTACT TRACKER</h1>
-    <p>Country • Name • Business type • Date • Status • Follow-up (saved in your browser)</p>
-  </header>
-
-  <!-- FOLLOW-UP ALERT -->
-  <div class="followup-bar" id="followupBar" style="display:none">
-    <div class="followup-bar__left">
-      <strong id="followupTitle">⚠️ Follow-ups</strong>
-      <span id="followupText">You have pending follow-ups.</span>
-    </div>
-    <div class="followup-bar__actions">
-      <button class="btn btn-primary btn-sm" id="btnViewFollowups" type="button">View now</button>
-      <button class="btn btn-sm" id="btnDismissFollowups" type="button">Dismiss</button>
-    </div>
-  </div>
-
-  <main class="wrap">
-    <section class="card">
-      <div class="card-title">ADD CONTACT</div>
-
-      <form id="form" class="form">
-        <div class="row row-2">
-          <div class="field">
-            <label>Client name *</label>
-            <input id="name" required placeholder="e.g., Sam’s Barbers" />
-          </div>
-
-          <div class="field">
-            <label>Business type *</label>
-            <input id="type" required placeholder="e.g., Barbershop / Café" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="field">
-            <label>Country *</label>
-            <select id="country" required></select>
-            <div class="helper" id="tzHint">Local time: —</div>
-          </div>
-
-          <div class="field">
-            <label>Message sent date *</label>
-            <input id="sentDate" type="date" required />
-          </div>
-
-          <div class="field">
-            <label>Channel</label>
-            <select id="channel">
-              <option>Instagram</option>
-              <option>WhatsApp</option>
-              <option>Facebook</option>
-              <option>LinkedIn</option>
-              <option>Google Maps</option>
-              <option>Email</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label>Status *</label>
-            <select id="status" required>
-              <option value="pending">🟡 Pending</option>
-              <option value="sent" selected>📩 Message sent</option>
-              <option value="replied">✅ Replied</option>
-              <option value="no_reply">🔴 No reply</option>
-            </select>
-          </div>
-
-          <!-- WhatsApp (conditional) -->
-          <div class="field" id="whatsappField" style="display:none">
-            <label>WhatsApp number</label>
-            <input id="whatsappNumber" inputmode="tel" placeholder="e.g., +44 7xxx xxx xxx" />
-            <div class="helper">Shown only when the channel is WhatsApp.</div>
-          </div>
-
-          <div class="field">
-            <label>Next follow-up (optional)</label>
-            <input id="followUp" type="date" />
-            <div class="helper">
-              Tip: following up in 2–3 days often increases reply rates.
+    <div class="app-container">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="top-bar-actions">
+                <input type="file" id="importInput" accept=".json" style="display: none;">
+                <button class="btn btn-secondary" onclick="importJSON()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    Import JSON
+                </button>
+                <button class="btn btn-secondary" onclick="exportJSON()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    Export JSON
+                </button>
+                <button class="btn btn-primary" onclick="openAddModal()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"/>
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
+                    Add Contact
+                </button>
+                <button class="btn btn-danger" onclick="resetData()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="1 4 1 10 7 10"/>
+                        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                    </svg>
+                    Reset Data
+                </button>
+                <div class="dropdown">
+                    <button class="btn btn-icon" onclick="toggleDropdown()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="5" r="2"/>
+                            <circle cx="12" cy="12" r="2"/>
+                            <circle cx="12" cy="19" r="2"/>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <button onclick="showAbout()">Sobre</button>
+                        <button onclick="clearFilters()">Limpar Filtros</button>
+                    </div>
+                </div>
             </div>
-          </div>
+        </header>
+
+        <!-- Time Info Bar -->
+        <div class="time-info-bar">
+            <span id="timeInfo">Seu Horário (UK): --:-- | Diferença de fuso: -- --h</span>
         </div>
 
-        <div class="actions">
-          <button class="btn btn-primary" type="submit">Save</button>
-
-          <button class="btn" type="button" id="btnExportPdf">Export PDF</button>
-          <button class="btn" type="button" id="btnExportJson">Export JSON</button>
-
-          <label class="btn btn-ghost file-btn">
-            Import JSON
-            <input type="file" id="import" accept="application/json" hidden />
-          </label>
-
-          <button class="btn btn-danger" type="button" id="btnClear">Clear all</button>
-        </div>
-      </form>
-    </section>
-
-    <section class="card">
-      <div class="card-title">CONTACT LIST</div>
-
-      <div class="toolbar">
-        <div class="legend">
-          <span class="pill blue">📩 Message sent</span>
-          <span class="pill green">✅ Replied</span>
-          <span class="pill yellow">🟡 Pending</span>
-          <span class="pill red">🔴 No reply</span>
-        </div>
-
-        <div class="filters">
-          <div class="filter">
-            <label>Filter by status</label>
-            <select id="filterStatus">
-              <option value="">All</option>
-              <option value="pending">🟡 Pending</option>
-              <option value="sent">📩 Message sent</option>
-              <option value="replied">✅ Replied</option>
-              <option value="no_reply">🔴 No reply</option>
-            </select>
-          </div>
-
-          <div class="filter">
-            <label>Filter by country</label>
-            <select id="filterCountry">
-              <option value="">All</option>
-            </select>
-          </div>
-
-          <div class="filter">
-            <label>Follow-up</label>
-            <select id="filterFollowup">
-              <option value="">All</option>
-              <option value="due">⚠️ Due / Today</option>
-              <option value="has">📅 Has follow-up</option>
-              <option value="none">— No follow-up</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div class="table-wrap">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Country</th>
-              <th>Local time</th>
-              <th>Client name</th>
-              <th>Business type</th>
-              <th class="whatsapp-col">WhatsApp</th>
-              <th>Date</th>
-              <th>Channel</th>
-              <th>Status</th>
-              <th>Follow-up</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="tbody"></tbody>
-        </table>
-
-        <div class="empty" id="empty">
-          No contacts yet.
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Edit modal -->
-  <div class="modal-backdrop" id="modalBackdrop">
-    <div class="modal">
-      <div class="modal-header">
-        <strong>Edit contact</strong>
-        <button class="x" id="btnClose" type="button">✕</button>
-      </div>
-
-      <form id="editForm" class="modal-body">
-        <input type="hidden" id="editId" />
-
-        <div class="row row-2">
-          <div class="field">
-            <label>Name</label>
-            <input id="editName" required />
-          </div>
-          <div class="field">
-            <label>Business type</label>
-            <input id="editType" required />
-          </div>
+        <!-- Filters Section -->
+        <div class="filters-section">
+            <div class="filter-group">
+                <label for="filterStatus">Status:</label>
+                <select id="filterStatus" onchange="applyFilters()">
+                    <option value="">Todos</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Sent">Sent</option>
+                    <option value="Replied">Replied</option>
+                    <option value="No reply">No reply</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="filterCountry">País:</label>
+                <select id="filterCountry" onchange="applyFilters()">
+                    <option value="">Todos</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="filterFollowUp">Follow-Up:</label>
+                <select id="filterFollowUp" onchange="applyFilters()">
+                    <option value="">Todos</option>
+                    <option value="today">Hoje</option>
+                    <option value="week">Esta Semana</option>
+                    <option value="overdue">Atrasados</option>
+                </select>
+            </div>
+            <div class="filter-group search-group">
+                <label for="searchInput">Buscar:</label>
+                <input type="text" id="searchInput" placeholder="Nome, contato, tipo..." oninput="applyFilters()">
+            </div>
         </div>
 
-        <div class="row">
-          <div class="field">
-            <label>Country</label>
-            <select id="editCountry" required></select>
-            <div class="helper" id="editTzHint">Local time: —</div>
-          </div>
-
-          <div class="field">
-            <label>Date</label>
-            <input id="editSentDate" type="date" required />
-          </div>
-
-          <div class="field">
-            <label>Channel</label>
-            <select id="editChannel">
-              <option>Instagram</option>
-              <option>WhatsApp</option>
-              <option>Facebook</option>
-              <option>LinkedIn</option>
-              <option>Google Maps</option>
-              <option>Email</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label>Status</label>
-            <select id="editStatus" required>
-              <option value="pending">🟡 Pending</option>
-              <option value="sent">📩 Message sent</option>
-              <option value="replied">✅ Replied</option>
-              <option value="no_reply">🔴 No reply</option>
-            </select>
-          </div>
-
-          <!-- WhatsApp (conditional) -->
-          <div class="field" id="editWhatsappField" style="display:none">
-            <label>WhatsApp number</label>
-            <input id="editWhatsappNumber" inputmode="tel" placeholder="e.g., +44 7xxx xxx xxx" />
-            <div class="helper">Shown only when the channel is WhatsApp.</div>
-          </div>
-
-          <div class="field">
-            <label>Follow-up</label>
-            <input id="editFollowUp" type="date" />
-          </div>
+        <!-- Table Container -->
+        <div class="table-container">
+            <table class="crm-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>País</th>
+                        <th>Horário Local</th>
+                        <th>Janela Ideal</th>
+                        <th>Nome do Negócio</th>
+                        <th>Tipo</th>
+                        <th>Contato</th>
+                        <th>Última Ação</th>
+                        <th>Status</th>
+                        <th>Dias Sem</th>
+                        <th>Próx. Follow-Up</th>
+                        <th>Obs.</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Rows will be dynamically inserted here -->
+                </tbody>
+            </table>
         </div>
 
-        <div class="actions">
-          <button class="btn btn-primary" type="submit">Save changes</button>
-          <button class="btn" type="button" id="btnCancel">Cancel</button>
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.5">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            <h3>Nenhum contato encontrado</h3>
+            <p>Clique em "+ Add Contact" para adicionar seu primeiro contato</p>
         </div>
-      </form>
     </div>
-  </div>
 
-  <script src="app.js"></script>
+    <!-- Add/Edit Modal -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2 id="modalTitle">Adicionar Contato</h2>
+                <button class="btn-close" onclick="closeModal()">&times;</button>
+            </div>
+            <form id="contactForm" onsubmit="saveContact(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="country">País *</label>
+                        <select id="country" required onchange="updateCountryPreview()">
+                            <option value="">Selecione...</option>
+                            <option value="BR">🇧🇷 Brasil</option>
+                            <option value="PT">🇵🇹 Portugal</option>
+                            <option value="UK">🇬🇧 Reino Unido</option>
+                            <option value="US">🇺🇸 Estados Unidos</option>
+                            <option value="MX">🇲🇽 México</option>
+                            <option value="ES">🇪🇸 Espanha</option>
+                            <option value="FR">🇫🇷 França</option>
+                            <option value="DE">🇩🇪 Alemanha</option>
+                            <option value="IT">🇮🇹 Itália</option>
+                            <option value="EE">🇪🇪 Estônia</option>
+                            <option value="AR">🇦🇷 Argentina</option>
+                            <option value="CL">🇨🇱 Chile</option>
+                            <option value="CO">🇨🇴 Colômbia</option>
+                            <option value="JP">🇯🇵 Japão</option>
+                            <option value="CN">🇨🇳 China</option>
+                            <option value="AU">🇦🇺 Austrália</option>
+                            <option value="CA">🇨🇦 Canadá</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="businessName">Nome do Negócio *</label>
+                        <input type="text" id="businessName" required placeholder="Ex: Café Lisboa">
+                    </div>
+                    <div class="form-group">
+                        <label for="businessType">Tipo *</label>
+                        <select id="businessType" required>
+                            <option value="">Selecione...</option>
+                            <option value="Restaurante">Restaurante</option>
+                            <option value="Cafeteria">Cafeteria</option>
+                            <option value="Lanchonete">Lanchonete</option>
+                            <option value="Hamburgueria">Hamburgueria</option>
+                            <option value="Pizzaria">Pizzaria</option>
+                            <option value="Padaria">Padaria</option>
+                            <option value="Barbearia">Barbearia</option>
+                            <option value="Salão de Beleza">Salão de Beleza</option>
+                            <option value="Academia">Academia</option>
+                            <option value="Clínica">Clínica</option>
+                            <option value="Pet Shop">Pet Shop</option>
+                            <option value="Loja">Loja</option>
+                            <option value="Oficina">Oficina</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contato *</label>
+                        <input type="text" id="contact" required placeholder="Telefone, email ou @instagram">
+                    </div>
+                    <div class="form-group">
+                        <label for="channel">Canal Principal</label>
+                        <select id="channel">
+                            <option value="WhatsApp">WhatsApp</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Email">Email</option>
+                            <option value="Phone">Telefone</option>
+                            <option value="Website">Website</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status">
+                            <option value="Pending">Pending</option>
+                            <option value="Sent">Sent</option>
+                            <option value="Replied">Replied</option>
+                            <option value="No reply">No reply</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastAction">Última Ação</label>
+                        <select id="lastAction">
+                            <option value="">Nenhuma</option>
+                            <option value="Mensagem Enviada">Mensagem Enviada</option>
+                            <option value="Follow-Up 1">Follow-Up 1</option>
+                            <option value="Follow-Up 2">Follow-Up 2</option>
+                            <option value="Aguardando Retorno">Aguardando Retorno</option>
+                            <option value="Fechado">Fechado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastActionDate">Data da Última Ação</label>
+                        <input type="date" id="lastActionDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="nextFollowUp">Próximo Follow-Up</label>
+                        <input type="date" id="nextFollowUp">
+                    </div>
+                    <div class="form-group">
+                        <label for="website">Website</label>
+                        <input type="url" id="website" placeholder="https://...">
+                    </div>
+                    <div class="form-group">
+                        <label for="instagram">Instagram</label>
+                        <input type="text" id="instagram" placeholder="@usuario">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="email@exemplo.com">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="notes">Observações</label>
+                        <textarea id="notes" rows="2" placeholder="Notas adicionais..."></textarea>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+                <input type="hidden" id="editingId">
+            </form>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div class="modal-overlay" id="aboutModal" onclick="closeAboutModal()">
+        <div class="modal modal-small" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2>Sobre o Mini CRM</h2>
+                <button class="btn-close" onclick="closeAboutModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Mini CRM de Contatos</strong></p>
+                <p>Versão 1.0.0</p>
+                <br>
+                <p>Uma ferramenta simples e offline para gestão de prospecção e follow-ups.</p>
+                <br>
+                <p><strong>Funcionalidades:</strong></p>
+                <ul>
+                    <li>✓ Gestão de contatos</li>
+                    <li>✓ Cálculo automático de fuso horário</li>
+                    <li>✓ Janela ideal de contato</li>
+                    <li>✓ Controle de follow-ups</li>
+                    <li>✓ Import/Export JSON</li>
+                    <li>✓ Funciona 100% offline</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
