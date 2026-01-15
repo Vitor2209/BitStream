@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vitor Edit Studio - Professional YouTube video editing services. Turn raw footage into videos people actually finish.">
+    <title>Vitor Edit Studio | Professional YouTube Video Editing</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="url(#logoGradient)"/>
+                        <defs>
+                            <linearGradient id="logoGradient" x1="2" y1="2" x2="22" y2="22">
+                                <stop offset="0%" stop-color="#a855f7"/>
+                                <stop offset="100%" stop-color="#7c3aed"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span>Vitor Edit Studio</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#faq">FAQs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#pricing" class="nav-buy-btn">Buy £19.99</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQs</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#pricing" class="mobile-buy-btn">Buy £19.99 Quote Fee</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Turn raw footage into YouTube videos people actually finish.</h1>
+                <p class="hero-subtext">I edit long-form YouTube videos with clean cuts, strong pacing, and polished audio — so your content feels professional, keeps viewers watching, and builds trust.</p>
+                <div class="hero-bullets">
+                    <span>✓ Fast turnaround</span>
+                    <span>✓ Clear communication</span>
+                    <span>✓ Creator-focused edits</span>
+                </div>
+                <div class="hero-ctas">
+                    <a href="https://wa.me/447000000000" target="_blank" class="btn btn-whatsapp">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        Message me on WhatsApp
+                    </a>
+                    <a href="mailto:vitor@vitoredit.studio" class="btn btn-email">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        Email me for a quote
+                    </a>
+                </div>
+                <div class="hero-price-badge">
+                    <div class="price-badge-main">
+                        <span class="price-amount">£19.99</span>
+                        <span class="price-label">Consultation / Quote Fee</span>
+                        <span class="price-note">(not the full edit)</span>
+                    </div>
+                    <p class="price-badge-subtext">You're paying for a personalised plan + quote. If you proceed, £19.99 is deducted from the final invoice.</p>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-img-wrapper">
+                    <div class="hero-img-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="80" height="80">
+                            <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM9.5 15l-3.5-4.5 4.5-5.5 5 6-3 3.5 3 3.5H9.5z"/>
+                        </svg>
+                        <span>Professional Editing Setup</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#pricing" class="floating-buy-btn" id="floatingBuyBtn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+            </svg>
+            Buy £19.99 Quote Fee
+        </a>
+    </section>
+
+    <!-- Benefits Strip -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <h2>Your content is good — the edit is what makes it watchable.</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                    </div>
+                    <div class="benefit-text">
+                        <h4>Better pacing & structure</h4>
+                        <p>Remove filler, keep flow</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                    </div>
+                    <div class="benefit-text">
+                        <h4>Clean audio & levels</h4>
+                        <p>Clear voice, balanced sound</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                    </div>
+                    <div class="benefit-text">
+                        <h4>Polished visuals</h4>
+                        <p>Basic colour correction, consistent look</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                    </div>
+                    <div class="benefit-text">
+                        <h4>Captions / on-screen text</h4>
+                        <p>Improves retention & clarity</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/>
+                        </svg>
+                    </div>
+                    <h3>YouTube Long-Form Editing</h3>
+                    <span class="service-badge">Main</span>
+                    <ul>
+                        <li>Structure & pacing</li>
+                        <li>Clean cuts</li>
+                        <li>Audio polish</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
+                        </svg>
+                    </div>
+                    <h3>YouTube Shorts</h3>
+                    <span class="service-badge secondary">Secondary</span>
+                    <ul>
+                        <li>TikTok, Reels & Shorts</li>
+                        <li>Hook + fast pacing</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+                        </svg>
+                    </div>
+                    <h3>Captions & On-screen Text</h3>
+                    <ul>
+                        <li>Subtitles & motion text</li>
+                        <li>Boost engagement</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                        </svg>
+                    </div>
+                    <h3>Audio & Colour Enhancement</h3>
+                    <ul>
+                        <li>Clean audio & levels</li>
+                        <li>Basic colour correction</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Strip 1 -->
+    <section class="cta-strip">
+        <div class="container">
+            <h3>Get your personalised quote for £19.99</h3>
+            <div class="cta-buttons">
+                <a href="https://PAYMENT-LINK-GOES-HERE" class="btn btn-gold">Buy £19.99 Quote Fee</a>
+                <a href="https://wa.me/447000000000" target="_blank" class="btn btn-whatsapp-outline">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    Or message on WhatsApp
+                </a>
+            </div>
+            <p class="cta-microcopy">Secure checkout • Instant confirmation</p>
+        </div>
+    </section>
+
+    <!-- Before & After Section -->
+    <section class="before-after" id="beforeafter">
+        <div class="container">
+            <h2 class="section-title">Before & After</h2>
+            <div class="ba-grid">
+                <div class="ba-card before">
+                    <div class="ba-header">
+                        <h3><span class="ba-label">Before:</span> raw footage</h3>
+                    </div>
+                    <div class="ba-image">
+                        <div class="ba-img-placeholder">
+                            <span>BEFORE</span>
+                        </div>
+                    </div>
+                    <ul class="ba-list">
+                        <li><span class="check">✓</span> Remove filler, keep flow</li>
+                        <li><span class="check">✓</span> Audio polish</li>
+                        <li><span class="check">✓</span> Basic colour treatment</li>
+                    </ul>
+                </div>
+                <div class="ba-card after">
+                    <div class="ba-header">
+                        <h3><span class="ba-label">After:</span> polished edit</h3>
+                    </div>
+                    <div class="ba-image">
+                        <div class="ba-img-placeholder after-img">
+                            <span>AFTER</span>
+                        </div>
+                    </div>
+                    <ul class="ba-list">
+                        <li><span class="check">✓</span> Hook + jump cuts</li>
+                        <li><span class="check">✓</span> Audio, levelling, captions</li>
+                        <li><span class="check">✓</span> Colour polish</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ba-cta">
+                <h3>Get your <strong>personalised quote</strong> for £19.99</h3>
+                <div class="cta-buttons">
+                    <a href="https://PAYMENT-LINK-GOES-HERE" class="btn btn-gold">Buy £19.99 Quote Fee</a>
+                    <a href="https://wa.me/447000000000" target="_blank" class="btn btn-whatsapp-outline">Or message on WhatsApp</a>
+                </div>
+                <p class="cta-microcopy">Secure checkout • Instant confirmation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What clients say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <span>JA</span>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>João A.</h4>
+                            <span>Small Business Owner</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"The edit made my content look ten times more professional."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <span>IM</span>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Isabel M.</h4>
+                            <span>YouTube Creator</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Super quick turnaround and the video blew up after editing!"</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <span>LR</span>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Lucas R.</h4>
+                            <span>Content Creator</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">★★★★☆</div>
+                    <p>"Clear communication and incredible editing work."</p>
+                </div>
+            </div>
+            <p class="testimonials-trust">Direct communication, no agency.</p>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Pricing</h2>
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Consultation / Quote Fee</h3>
+                    <div class="pricing-price">
+                        <span class="price-currency">£</span>
+                        <span class="price-value">19.99</span>
+                    </div>
+                </div>
+                <ul class="pricing-features">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Content analysis (structure + pacing opportunities)
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Editing plan & style suggestions
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        A tailored quote (timeline + total cost)
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Delivery estimate
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Next steps checklist
+                    </li>
+                </ul>
+                <div class="pricing-notice">
+                    <strong>£19.99 is NOT the full editing service.</strong><br>
+                    It is a fee to create your personalised plan + quote.
+                </div>
+                <a href="https://PAYMENT-LINK-GOES-HERE" class="btn btn-gold btn-large">Buy now — £19.99</a>
+                <p class="pricing-deduct">If you proceed with the full edit, £19.99 is deducted from the final invoice.</p>
+                <p class="pricing-secure">🔒 Secure checkout • Instant confirmation</p>
+                <a href="https://wa.me/447000000000" target="_blank" class="btn btn-whatsapp-outline">Questions? Message me on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="howitworks">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Purchase the £19.99 quote fee</h3>
+                    <p>Quick secure checkout via the button above.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Send footage + reference</h3>
+                    <p>Share your files via WhatsApp or Email.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Receive your plan + quote</h3>
+                    <p>Within 24–48 hours you'll have everything.</p>
+                </div>
+            </div>
+            <div class="peace-of-mind">
+                <div class="peace-icon">🛡️</div>
+                <div class="peace-content">
+                    <h4>7-day peace of mind</h4>
+                    <p>If the quote isn't useful, message me and we'll make it right.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Who you'll work with</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="about-img-placeholder">
+                        <span>VDM</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>I'm <strong>Vitor Dutra Melo</strong>. I work directly with clients (no agency), focusing on clean edits that keep viewers watching.</p>
+                    <ul class="about-ticks">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            Direct communication
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            Viewer-retention focused editing
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            Mobile-first captions (when needed)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-thumb">
+                        <div class="portfolio-placeholder">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p>Tech Review Edit</p>
+                    <button class="btn btn-outline" onclick="alert('Samples available on request. Contact via WhatsApp or Email.')">Watch sample</button>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-thumb">
+                        <div class="portfolio-placeholder">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p>Vlog Transformation</p>
+                    <button class="btn btn-outline" onclick="alert('Samples available on request. Contact via WhatsApp or Email.')">Watch sample</button>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-thumb">
+                        <div class="portfolio-placeholder">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p>Short-form Hooks</p>
+                    <button class="btn btn-outline" onclick="alert('Samples available on request. Contact via WhatsApp or Email.')">Watch sample</button>
+                </div>
+            </div>
+            <p class="portfolio-note">Full samples available on request via WhatsApp or Email.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">FAQs</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Is £19.99 the full price?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7 10l5 5 5-5z"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>No. £19.99 is a consultation/quote fee only.</strong> It covers the time to analyse your content, create an editing plan, and provide a tailored quote for the full service. If you proceed with the full edit, the £19.99 is deducted from the final invoice.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What do I get for £19.99?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7 10l5 5 5-5z"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You receive: content analysis, editing plan & style suggestions, a tailored quote with timeline and cost, delivery estimate, and a next steps checklist — all within 24–48 hours.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How do I send my footage?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7 10l5 5 5-5z"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>After purchase, you can send files via WhatsApp, Email, or a file-sharing link (Google Drive, Dropbox, WeTransfer, etc.). I'll confirm receipt and get started immediately.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How fast is delivery?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7 10l5 5 5-5z"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The quote/plan is delivered within 24–48 hours. For full edits, timelines depend on video length and complexity — typically 3–7 days for standard projects.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Do you edit Shorts as well?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7 10l5 5 5-5z"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! I edit YouTube Shorts, TikToks, and Instagram Reels. These are typically faster to turn around and can be quoted as part of your plan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-buttons">
+                    <a href="https://wa.me/447000000000" target="_blank" class="btn btn-whatsapp btn-large">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        Message on WhatsApp
+                    </a>
+                    <a href="mailto:vitor@vitoredit.studio" class="btn btn-email btn-large">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        Send an Email
+                    </a>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                        <span class="form-error" id="nameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="form-error" id="emailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                        <span class="form-error" id="messageError"></span>
+                    </div>
+                    <button type="submit" class="btn btn-email btn-large">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="nav-logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="url(#logoGradient2)"/>
+                                <defs>
+                                    <linearGradient id="logoGradient2" x1="2" y1="2" x2="22" y2="22">
+                                        <stop offset="0%" stop-color="#a855f7"/>
+                                        <stop offset="100%" stop-color="#7c3aed"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <span>Vitor Edit Studio</span>
+                    </div>
+                    <p>Professional YouTube video editing services.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#services">Services</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#faq">FAQs</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-disclaimer">
+                <p><strong>Important:</strong> The £19.99 Consultation / Quote Fee is NOT the full video editing service price. It covers content analysis and a personalised quote. If you proceed with the full edit, £19.99 is deducted from the final invoice.</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Vitor Edit Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
