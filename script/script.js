@@ -1,195 +1,206 @@
-// ============================================
-// BitStream Website - JavaScript (FINAL)
-// ============================================
+/**
+ * BitStream Systems - Main JavaScript
+ * Pure vanilla JavaScript for interactions
+ */
 
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function () {
-    initNavigation();
-    initParticles();
-    initScrollAnimations();
-    initServiceSelection();
-    initContactForm();
-});
+document.addEventListener('DOMContentLoaded', function() {
+    'use strict';
 
-// ============================================
-// Navigation
-// ============================================
-function initNavigation() {
-    const navbar = document.getElementById('navbar');
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
+    // ===================================
+    // Mobile Navigation Toggle
+    // ===================================
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
 
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
-    if (navToggle) {
-        navToggle.addEventListener('click', function () {
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
             navToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
 
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
+        // Close menu when clicking a link
+        const navLinks = navMenu.querySelectorAll('.nav-link');
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
                 navToggle.classList.remove('active');
                 navMenu.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
     }
-}
 
-// ============================================
-// Particles Background
-// ============================================
-function initParticles() {
-    const container = document.getElementById('particles');
-    if (!container) return;
+    // ===================================
+    // Header Scroll Effect
+    // ===================================
+    const header = document.getElementById('header');
+    let lastScroll = 0;
 
-    for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        const size = Math.random() * 3 + 1;
+    window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 100) {
+            header.style.background = 'rgba(10, 10, 11, 0.95)';
+        } else {
+            header.style.background = 'rgba(10, 10, 11, 0.85)';
+        }
+        
+        lastScroll = currentScroll;
+    });
 
-        particle.style.cssText = `
-            position: absolute;
-            width: ${size}px;
-            height: ${size}px;
-            background: radial-gradient(circle, rgba(0,212,255,.5), transparent);
-            border-radius: 50%;
-            left: ${Math.random() * 100}%;
-            top: ${Math.random() * 100}%;
-            animation: float ${Math.random() * 20 + 10}s infinite;
-        `;
-        container.appendChild(particle);
-    }
-}
-
-const style = document.createElement('style');
-style.innerHTML = `
-@keyframes float {
-    0%,100% { transform: translate(0,0); opacity:0 }
-    50% { transform: translate(30px,-30px); opacity:1 }
-}`;
-document.head.appendChild(style);
-
-// ============================================
-// REAL Contact Form (EMAIL FUNCIONANDO)
-// ============================================
-function initContactForm() {
-    const form = document.getElementById('contactForm');
-    const success = document.getElementById('formSuccess');
-
-    if (!form) return;
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const button = form.querySelector('button[type="submit"]');
-        const originalText = button.innerHTML;
-
-        button.innerHTML = '<span>Sending...</span>';
-        button.disabled = true;
-
-        const formData = new FormData(form);
-
-        try {
-            const response = await fetch(
-                'https://formsubmit.co/ajax/contato.bitstream@gmail.com',
-                {
-                    method: 'POST',
-                    headers: { 'Accept': 'application/json' },
-                    body: formData
+    // ===================================
+    // Smooth Scroll for Anchor Links
+    // ===================================
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href !== '#') {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const headerHeight = header ? header.offsetHeight : 0;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
                 }
-            );
-
-            if (response.ok) {
-                form.style.display = 'none';
-                success.style.display = 'block';
-                form.reset();
-            } else {
-                alert('Something went wrong. Please try again.');
             }
-        } catch (err) {
-            alert('Error sending message. Check your connection.');
-        } finally {
-            button.innerHTML = originalText;
-            button.disabled = false;
-        }
+        });
     });
-}
 
-// ============================================
-// Service Selection from URL
-// ============================================
-function initServiceSelection() {
-    if (!window.location.pathname.includes('contact.html')) return;
+    // ===================================
+    // Contact Form Handling
+    // ===================================
+    const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
 
-    const params = new URLSearchParams(window.location.search);
-    const service = params.get('service');
-    const product = params.get('product');
-
-    const serviceSelect = document.getElementById('service');
-    const message = document.getElementById('message');
-
-    if (service && serviceSelect) {
-        serviceSelect.value = service;
-    }
-
-    if (product && message) {
-        const products = {
-            'landing-template': 'Landing Page Template',
-            'dashboard-kit': 'Admin Dashboard UI Kit',
-            'ecommerce-frontend': 'E-commerce Frontend',
-            'react-library': 'React Component Library',
-            'portfolio-template': 'Portfolio Template',
-            'docs-template': 'Documentation Template'
-        };
-
-        message.value = `Hello! I'm interested in the ${products[product] || product}. Could you provide more details?`;
-    }
-}
-
-// ============================================
-// Scroll Animations
-// ============================================
-function initScrollAnimations() {
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.feature-card, .service-card, .product-card, .info-card')
-        .forEach(el => {
-            el.style.opacity = 0;
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = '0.6s ease';
-            observer.observe(el);
-        });
-}
-
-// ============================================
-// Smooth Scroll
-// ============================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-        const target = document.querySelector(anchor.getAttribute('href'));
-        if (target) {
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Basic validation
+            if (!formData.name || !formData.email || !formData.message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(formData.email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Log form data (for demonstration)
+            console.log('Form submitted:', formData);
+            
+            // Show success message
+            contactForm.style.display = 'none';
+            formSuccess.classList.add('show');
+            
+            // Reset form
+            contactForm.reset();
+        });
+    }
+
+    // ===================================
+    // Intersection Observer for Animations
+    // ===================================
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const fadeInObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in-up');
+                fadeInObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements for animation
+    const animateElements = document.querySelectorAll('.service-card, .project-card, .benefit-item, .process-step, .service-detail-card');
+    animateElements.forEach(function(el) {
+        el.style.opacity = '0';
+        fadeInObserver.observe(el);
     });
+
+    // ===================================
+    // Active Nav Link Highlight
+    // ===================================
+    const sections = document.querySelectorAll('section[id]');
+    
+    function highlightNavLink() {
+        const scrollPosition = window.pageYOffset + 200;
+        
+        sections.forEach(function(section) {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                document.querySelectorAll('.nav-link').forEach(function(link) {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + sectionId) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', highlightNavLink);
+
+    // ===================================
+    // Button Hover Effects
+    // ===================================
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(function(btn) {
+        btn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+        });
+        btn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+
+    // ===================================
+    // Card Hover Tilt Effect (subtle)
+    // ===================================
+    const cards = document.querySelectorAll('.service-card, .project-card');
+    cards.forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            
+            card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-8px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        });
+    });
+
+    // ===================================
+    // Console Message
+    // ===================================
+    console.log('%c BitStream Systems ', 'background: linear-gradient(135deg, #00d4ff, #0099cc); color: #0a0a0b; font-size: 20px; font-weight: bold; padding: 10px 20px; border-radius: 4px;');
+    console.log('Built with care. Looking for a website? Contact us!');
 });
-
-// ============================================
-// Console Branding
-// ============================================
-console.log('%cBitStream Digital Solutions', 'color:#00d4ff;font-size:24px;font-weight:bold');
-console.log('%cProfessional Web Development', 'color:#aaa');
-

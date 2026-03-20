@@ -1,155 +1,290 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en-GB">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BitStream | Web & Software Solutions</title>
-    <link rel="stylesheet" href="style/style.css">
+    <meta name="description"
+        content="BitStream Systems - Professional websites and digital solutions that bring you customers and grow your business.">
+    <title>BitStream Systems | Websites That Bring You Customers</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="shortcut icon" href="assets/ChatGPT Image 28 de nov. de 2025, 11_19_43.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style/style.css">
 </head>
-<body>
-    <!-- Particle Background -->
-    <div class="particles" id="particles"></div>
 
+<body>
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
+    <header class="site-header" id="header">
+        <nav class="nav container">
             <a href="index.html" class="nav-logo">
                 <div class="logo-ico">
-                    <img src="assets/favicon.ico" width="40" height="40" viewBox="0 0 100 100" fill="none"  alt="logo-icon">
+                    <img src="assets/favicon.ico" width="40" height="40" viewBox="0 0 100 100" fill="none"
+                        alt="logo-icon">
                 </div>
                 <span class="logo-text">BitStream</span>
             </a>
-            
-            <div class="nav-toggle" id="navToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link active">HOME</a></li>
-                <li><a href="pages/services.html" class="nav-link">SERVICES</a></li>
-                <li><a href="pages/shop.html" class="nav-link">SHOP</a></li>
-                <li><a href="pages/contact.html" class="nav-link">CONTACT</a></li>
+            <button class="nav-toggle" id="nav-toggle" data-testid="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link active" data-testid="nav-home">Home</a></li>
+                <li><a href="pages/services.html" class="nav-link" data-testid="nav-services">Services</a></li>
+                <li><a href="pages/contact.html" class="nav-link" data-testid="nav-contact">Contact</a></li>
+                <li><a href="pages/contact.html" class="btn btn-primary nav-cta" data-testid="nav-cta">Get Started</a>
+                </li>
             </ul>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-badge">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                </svg>
-                REMOTE-FIRST SOFTWARE STUDIO
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-bg"></div>
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title" data-testid="hero-title">
+                        Websites That Bring You <span class="text-gradient">Customers</span>
+                    </h1>
+                    <p class="hero-subtitle" data-testid="hero-subtitle">
+                        We build high-performing digital solutions that help your business grow, attract clients, and
+                        stand out online.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="pages/contact.html" class="btn btn-primary" data-testid="hero-cta-primary">Get Your
+                            Website Now</a>
+                        <a href="pages/services.html" class="btn btn-secondary" data-testid="hero-cta-secondary">View
+                            Our Services</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
+                            alt="Professional web development dashboard" class="hero-image">
+                        <div class="hero-image-glow"></div>
+                    </div>
+                </div>
             </div>
-            <h1 class="hero-title">
-                Web & Software<br>
-                <span class="gradient-text">Solutions</span><br>
-                <span class="hero-subtitle">Built for Business</span>
-            </h1>
-            <p class="hero-description">
-                We build reliable websites, systems, and APIs that help businesses grow.<br>
-                Clean architecture, great performance, and long-term maintainability.
-            </p>
-            <div class="hero-buttons">
-                <a href="pages/contact.html" class="btn btn-primary">
-                    <span>GET IN TOUCH</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
-                <a href="pages/services.html" class="btn btn-secondary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="13 17 18 12 13 7"></polyline>
-                        <polyline points="6 17 11 12 6 7"></polyline>
-                    </svg>
-                    <span>VIEW SERVICES</span>
-                </a>
-            </div>
-        </div>
-        <div class="hero-glow"></div>
-    </section>
+        </section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Why Choose <span class="gradient-text">BitStream</span>?</h2>
-                <p class="section-subtitle">Reliable delivery. Clean code. Long-term value.</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <polyline points="16 18 22 12 16 6"></polyline>
-                            <polyline points="8 6 2 12 8 18"></polyline>
-                        </svg>
+        <!-- Trust Section -->
+        <section class="trust" id="trust">
+            <div class="container">
+                <p class="trust-text" data-testid="trust-text">
+                    Trusted by businesses looking to grow online with clarity and results.
+                </p>
+                <div class="trust-indicators">
+                    <div class="trust-item">
+                        <span class="trust-number">50+</span>
+                        <span class="trust-label">Projects Delivered</span>
                     </div>
-                    <h3 class="feature-title">Clean Architecture</h3>
-                    <p class="feature-description">Maintainable code and solid structure that scales with your business.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                        </svg>
+                    <div class="trust-item">
+                        <span class="trust-number">98%</span>
+                        <span class="trust-label">Client Satisfaction</span>
                     </div>
-                    <h3 class="feature-title">Responsive by Default</h3>
-                    <p class="feature-description">A consistent experience across mobile, tablet, and desktop.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
+                    <div class="trust-item">
+                        <span class="trust-number">3+</span>
+                        <span class="trust-label">Years Experience</span>
                     </div>
-                    <h3 class="feature-title">Clear Milestones</h3>
-                    <p class="feature-description">Transparent timelines and delivery with clear project stages.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Security & Reliability</h3>
-                    <p class="feature-description">Best practices to protect data and keep systems stable and secure.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="cta-overlay"></div>
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Ready to build something reliable?</h2>
-                <p class="cta-description">Tell us what you need — we’ll reply with next steps.</p>
-                <a href="pages/contact.html" class="btn btn-primary btn-large">
-                    <span>CONTACT BITSTREAM</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-testid="services-title">What We Do</h2>
+                    <p class="section-subtitle">Solutions designed to deliver results</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card" data-testid="service-websites">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Website Development</h3>
+                        <p class="service-description">Professional websites designed to convert visitors into paying
+                            customers.</p>
+                        <a href="pages/services.html" class="service-link">Learn more <span>&rarr;</span></a>
+                    </div>
+                    <div class="service-card" data-testid="service-systems">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Custom Systems</h3>
+                        <p class="service-description">Smart systems that automate your business and save you time.</p>
+                        <a href="pages/services.html" class="service-link">Learn more <span>&rarr;</span></a>
+                    </div>
+                    <div class="service-card" data-testid="service-ecommerce">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">E-commerce</h3>
+                        <p class="service-description">Online stores built to sell more and scale your business.</p>
+                        <a href="pages/services.html" class="service-link">Learn more <span>&rarr;</span></a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-testid="projects-title">Our Work</h2>
+                    <p class="section-subtitle">Real solutions built for real businesses</p>
+                </div>
+                <div class="projects-grid">
+                    <article class="project-card" data-testid="project-restaurant">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop"
+                                alt="The Golden Plate - Restaurant Website">
+                            <div class="project-overlay">
+                                <a href="https://bitstreamsystemsppp.github.io/Coffee_Coworking/"
+                                    class="btn btn-small">View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Montis Coffee House</h3>
+                            <p class="project-category">Restaurant & Café Website</p>
+                            <p class="project-description">A modern and engaging website featuring menu showcase, online
+                                reservations, and a seamless user experience tailored for cafés and restaurants.</p>
+                        </div>
+                    </article>
+                    <article class="project-card" data-testid="project-barbershop">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&h=400&fit=crop"
+                                alt="Fade Masters - Barbershop Website">
+                            <div class="project-overlay">
+                                <a href="https://bitstreamsystemsppp.github.io/web_site-Barbearia/"
+                                    class="btn btn-small">View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Barbers & Hair Cutting</h3>
+                            <p class="project-category">Barbershop Booking System</p>
+                            <p class="project-description">A modern barbershop booking system featuring appointment
+                                scheduling, service management, and a clean user-friendly interface designed for
+                                real-world business scenarios.</p>
+                        </div>
+                    </article>
+                    <article class="project-card" data-testid="project-tattoo">
+                        <div class="project-image">
+                            <img src="assets/images/Screenshot 2026-03-18 174541.png" alt="Tattoo Studio Website">
+                            alt="Ink Studio - Tattoo Website">
+                            <div class="project-overlay">
+                                <a href="https://bitstreamsystemsppp.github.io/WebSite_Studiotatoo/"
+                                    class="btn btn-small">View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">The Studio</h3>
+                            <p class="project-category">Tattoo Studio Website</p>
+                            <p class="project-description">
+                                A modern and visually striking website designed to showcase tattoo portfolios, highlight
+                                artists, and attract new clients, built with a focus on real-world business
+                                presentation.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits" id="benefits">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-testid="benefits-title">Why Choose Us</h2>
+                    <p class="section-subtitle">What you get when you work with us</p>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-item" data-testid="benefit-visibility">
+                        <div class="benefit-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">More Visibility</h3>
+                        <p class="benefit-description">Get found online and reach more potential customers</p>
+                    </div>
+                    <div class="benefit-item" data-testid="benefit-presence">
+                        <div class="benefit-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Professional Presence</h3>
+                        <p class="benefit-description">Build trust with a polished, credible online image</p>
+                    </div>
+                    <div class="benefit-item" data-testid="benefit-mobile">
+                        <div class="benefit-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Mobile Optimised</h3>
+                        <p class="benefit-description">Perfect experience on every device</p>
+                    </div>
+                    <div class="benefit-item" data-testid="benefit-delivery">
+                        <div class="benefit-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Fast Delivery</h3>
+                        <p class="benefit-description">Quick turnaround without compromising quality</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="final-cta" id="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title" data-testid="cta-title">Ready to Grow Your Business?</h2>
+                    <p class="cta-text">Let's build something that brings you real results.</p>
+                    <a href="pages/contact.html" class="btn btn-primary btn-large" data-testid="cta-button">Start Your
+                        Project Now</a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -158,32 +293,32 @@
                 <div class="footer-section">
                     <div class="footer-logo">
                         <div class="logo-ico">
-                            <img src="assets/ChatGPT Image 28 de nov. de 2025, 11_19_43.png" width="35" height="35" alt="logo">
+                            <img src="assets/ChatGPT Image 28 de nov. de 2025, 11_19_43.png" width="35" height="35"
+                                alt="logo">
                         </div>
                         <span>BitStream</span>
                     </div>
                     <p class="footer-description">Remote-first web & software solutions for businesses worldwide.</p>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4 class="footer-title">Quick Links</h4>
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="pages/services.html">Services</a></li>
-                        <li><a href="pages/shop.html">Shop</a></li>
                         <li><a href="pages/contact.html">Contact</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4 class="footer-title">Services</h4>
                     <ul class="footer-links">
-                        <li><a href="pages/services.html#web-development">Web Development</a></li>
-                        <li><a href="pages/services.html#custom-systems">Custom Systems</a></li>
-                        <li><a href="pages/services.html#ecommerce">E-commerce</a></li>
+                        <li><a href="../pages/services.html#web-development">Web Development</a></li>
+                        <li><a href="../pages/services.html#custom-systems">Custom Systems</a></li>
+                        <li><a href="../pages/services.html#ecommerce">E-commerce</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4 class="footer-title">Contact</h4>
                     <ul class="footer-links">
@@ -192,30 +327,38 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <div class="social-links">
-                    <a href="https://www.instagram.com/bitstream.systems" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <a href="https://www.instagram.com/bitstream.systems" class="social-link" target="_blank"
+                        rel="noopener noreferrer" aria-label="Instagram">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                         </svg>
                     </a>
-                    
-                    <a href="https://www.facebook.com/share/173b9BfPsM/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+
+                    <a href="https://www.facebook.com/share/173b9BfPsM/" class="social-link" target="_blank"
+                        rel="noopener noreferrer" aria-label="Facebook">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                         </svg>
                     </a>
-                    
-                    <a href="https://www.linkedin.com/company/109861222/admin/dashboard/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+
+                    <a href="https://www.linkedin.com/company/109861222/admin/dashboard/" class="social-link"
+                        target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                         </svg>
                     </a>
-                    
-                    <a href="https://x.com/BitStream_LTDA" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+
+                    <a href="https://x.com/BitStream_LTDA" class="social-link" target="_blank" rel="noopener noreferrer"
+                        aria-label="X (Twitter)">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                         </svg>
                     </a>
                 </div>
@@ -223,18 +366,17 @@
             </div>
         </div>
     </footer>
-
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/447785314195?text=Hello!%20I%20would%20like%20to%20know%20more%20about%20the%20services%20offered%20by%20BitStream." 
-       class="whatsapp-float" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       aria-label="Contato via WhatsApp">
-        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.824.736 5.488 2.016 7.8L.696 30.696l7.208-1.896A15.935 15.935 0 0 0 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.36c-2.456 0-4.76-.672-6.736-1.84l-.48-.288-4.992 1.312 1.336-4.872-.32-.504A13.288 13.288 0 0 1 2.64 16c0-7.352 5.984-13.336 13.336-13.336S29.312 8.648 29.312 16 23.328 29.36 15.976 29.36zm7.312-9.984c-.4-.2-2.368-1.168-2.736-1.304-.368-.136-.632-.2-.904.2-.264.4-1.04 1.304-1.272 1.576-.232.272-.464.304-.864.104-.4-.2-1.688-.624-3.216-1.984-1.184-1.056-1.992-2.36-2.224-2.76-.232-.4-.024-.616.176-.816.176-.176.4-.464.6-.696.2-.232.264-.4.4-.664.136-.272.072-.504-.032-.704-.104-.2-.904-2.176-1.24-2.984-.32-.784-.648-.68-.904-.696-.232-.016-.496-.016-.76-.016s-.696.096-1.064.496c-.368.4-1.4 1.368-1.4 3.336s1.432 3.872 1.632 4.136c.2.272 2.824 4.312 6.84 6.048.952.416 1.696.664 2.272.848.96.304 1.832.264 2.52.16.768-.112 2.368-.968 2.704-1.904.336-.936.336-1.736.232-1.904-.096-.168-.36-.272-.76-.472z"/>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/447785314195?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+        class="whatsapp-float" target="_blank" rel="noopener" data-testid="whatsapp-button"
+        aria-label="Contact us on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
     </a>
 
     <script src="script/script.js"></script>
 </body>
+
 </html>
