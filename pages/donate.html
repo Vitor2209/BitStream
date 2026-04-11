@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Support BitStream</title>
+
+  <!-- QR Code Library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #0d1117, #020409);
+      color: #e6edf3;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: #161b22;
+      padding: 35px;
+      border-radius: 16px;
+      width: 380px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #8b949e;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .qr-container {
+      background: #0d1117;
+      padding: 12px;
+      border-radius: 12px;
+      display: inline-block;
+      margin: 20px 0;
+    }
+
+    canvas {
+      width: 200px !important;
+      height: 200px !important;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px 0;
+      gap: 10px;
+    }
+
+    .buttons button {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #30363d;
+      background: #0d1117;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .buttons button:hover {
+      background: #21262d;
+      transform: translateY(-2px);
+    }
+
+    .copy-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, #2f81f7, #1f6feb);
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: 0.2s;
+    }
+
+    .copy-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .thanks {
+      margin-top: 15px;
+      font-size: 13px;
+      color: #8b949e;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>Support BitStream</h1>
+
+    <p>
+      If you like our work and want to support the development
+      of future systems and tools, you can contribute any amount.
+    </p>
+
+    <p>Your support helps us keep building high-quality solutions.</p>
+
+    <div class="qr-container">
+      <canvas id="qr"></canvas>
+    </div>
+
+    <div class="buttons">
+      <button onclick="setAmount(5)">£5 ☕</button>
+      <button onclick="setAmount(15)">£15 🚀</button>
+      <button onclick="setAmount(25)">£25 💻</button>
+    </div>
+
+    <button class="copy-btn" onclick="copyLink()">
+      Copy Payment Link
+    </button>
+
+    <div class="thanks">
+      Thank you for your support 🙏
+    </div>
+  </div>
+
+  <script>
+    // 🔥 COLE AQUI SEU LINK DO REVOLUT
+    let baseLink = "https://revolut.me/SEU_USUARIO";
+
+    let currentAmount = "";
+
+    function generateQR() {
+      const fullLink = currentAmount 
+        ? `${baseLink}?amount=${currentAmount}` 
+        : baseLink;
+
+      QRCode.toCanvas(document.getElementById("qr"), fullLink, {
+        width: 200
+      });
+    }
+
+    function setAmount(amount) {
+      currentAmount = amount;
+      generateQR();
+    }
+
+    function copyLink() {
+      const fullLink = currentAmount 
+        ? `${baseLink}?amount=${currentAmount}` 
+        : baseLink;
+
+      navigator.clipboard.writeText(fullLink);
+      alert("Payment link copied!");
+    }
+
+    // Inicializa QR
+    generateQR();
+  </script>
+
+</body>
+</html>
